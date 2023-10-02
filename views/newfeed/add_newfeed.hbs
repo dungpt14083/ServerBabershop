@@ -1,0 +1,67 @@
+<section class=" bg-image mt-5">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <form id="form-1" action="" method="post" enctype="multipart/form-data">
+                                <p class="h4 mb-4 text-center" style="font-size: 35px">Thêm tin tức</p>
+                                <div class="form-group mb-4">
+                                    <label class="form-label" for="form3Example1cg">Tiêu đề</label>
+                                    <input type="text" id="title" name="title" placeholder="Tiêu đề..."
+                                           class="form-control form-control-md"/>
+                                    <span class="form-message"></span>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label class="form-label" for="form3Example4cdg">Thêm ảnh</label>
+                                    <input class="form-control form-control-md" id="image" name="image" multiple
+                                           type="file"/>
+                                    <div class="small text-muted mt-2">Upload your photo, video or any related file.
+                                        Maximum file size 50 MB
+                                    </div>
+                                    <span class="form-message"></span>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label class="form-label" for="form3Example3cg">Nội dung tiêu đề</label>
+                                    <input type="text" id="content"  name="contentTitle" placeholder="Nội dung tiêu đề..."
+                                           class="form-control form-control-md"/>
+                                    <span class="form-message"></span>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label class="form-label" for="form3Example4cg">Mô tả</label>
+                                    <textarea class="form-control" id="description" rows="3" name="description"
+                                              placeholder="Mô tả..."></textarea>
+                                    <span class="form-message"></span>
+                                </div>
+                                <div class="d-flex justify-content-center mt-3">
+                                    <button type="submit" class="btn btn-warning"
+                                            style="background-color: #F9E323;font-weight: bold">Hoàn tất
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="/stylesheets/validator.js"></script>
+<script>
+
+    Validator({
+        form: '#form-1',
+        errSelector: '.form-message',
+        rules: [
+            Validator.isRequired('#title','Tiêu đề không được để trống'),
+            Validator.isRequired('#content','Nội dung không được để trống'),
+            Validator.isRequired('#image','Vui lòng chọn ảnh'),
+            Validator.isRequired('#description','Mô tả không được để trống'),
+            // Validator.isEmail('#email'),
+        ],
+        // onSubmit: function (data){
+        //
+        // }
+    })
+</script>

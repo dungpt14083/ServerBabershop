@@ -1,0 +1,494 @@
+<div>
+
+    <div class="row my-2">
+
+        <form class="col-12 col-md-6 col-lg-9 mb-9 mb-lg-0 row my-2" method="post" >
+
+            <div class="form-outline col-9 col-lg-4">
+                    <input type="date" id="tungay" placeholder="Tu ngay" name="tungay"
+                           class=" form-control form-control-md "/>
+            </div>
+
+            <div class="form-outline col-9 col-lg-4">
+                    <input type="date" id="denngay" placeholder="Den ngay" name="denngay"
+                           class=" form-control form-control-md "/>
+            </div>
+
+            <div class="col-9 col-lg-1">
+                <button type="submit" class="btn btn-success" style="background-color: #F9E323;font-weight: bold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor"
+                         class="bi bi-search"
+                         viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                </button>
+            </div>
+
+        </form>
+
+<!--        <form method="post" class="row my-2 col-md-6 col-lg-3 mb-3 mb-lg-0" >-->
+<!--            <div class="form-outline col-12 col-md-6 col-lg-10 mb-10 mb-lg-0 ms-md-auto">-->
+<!--                <div class="w-100 ">-->
+<!--                    <input type="text" id="namekhach" placeholder="Tên Khách Hàng" name="namekhach"-->
+<!--                           class=" form-control form-control-md "/>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="col-12 col-md-6 col-lg-2 mb-2 mb-lg-0">-->
+<!--                <button type="submit" class="btn btn-warning" style="background-color: #F9E323;font-weight: bold">-->
+<!--                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor"-->
+<!--                         class="bi bi-search"-->
+<!--                         viewBox="0 0 16 16">-->
+<!--                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>-->
+<!--                    </svg>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            &lt;!&ndash;        <div class="col-auto">&ndash;&gt;-->
+<!--            &lt;!&ndash;            <a type="button" href="/order/add" class="btn btn-warning" style="background:#F9E323">Thêm mới</a>&ndash;&gt;-->
+<!--            &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        </form>-->
+
+    </div>
+    <table id="table_main" class="table table-responsive  table-hover table table-bordered " style="margin-top: 20px">
+        <thead>
+        <tr style="text-align: center">
+
+            <th scope="col" style="color: black">STT</th>
+            <th scope="col" style="color: black">Tên Khách Hàng</th>
+            <th scope="col" style="color: black">Dịch Vụ</th>
+            <th scope="col" style="color: black">Stylist</th>
+            <th scope="col" style="color: black">Trạng thái</th>
+            <th scope="col" style="color: black">Thời gian</th>
+            <th scope="col" style="color: black">Ghi chú</th>
+            <th scope="col" style="color: black">Tổng tiền</th>
+            <th scope="col" style="color: black">Tiến Độ</th>
+
+        </tr>
+        </thead>
+        <tbody >
+
+        {{#each listOder}}
+
+            <tr style="text-align: center">
+                <td class="text-center stt" scope="row" >{{@index}}</td>
+                <td class="text-center" style="color: black">{{this.nameUser}}</td>
+                <td class="text-center"
+                    style="color: black ;max-width: 200px ; word-wrap: break-word ; word-break: break-word">
+                    {{#each this.nameServices}}
+                        <p>{{this}}</p>
+                    {{/each}}
+                </td>
+                <td class="text-center" style="color: black">{{this.nameStylist}}</td>
+                <td class="text-left " style="color: black">{{this.status}}</td>
+                <td class="text-center time" style="color: black">{{ this.time}}</td>
+                <td class="text-center" style="white-space: nowrap;overflow: hidden;text-overflow: clip;max-width:150px">{{this.note}}</td>
+                <td class="text-right " style="color: black">{{this.sumPrice}}</td>
+
+                <td class="text-center" id="row_btn">
+
+                    <button type="button" class="btn btn-warning" style="font-weight: bold"
+                            data-bs-toggle="modal" id="btn_XacNhan_Order" name="btn_XacNhan_Order"
+                            data-bs-target="#modal_XacNhan"
+                            data-id="{{this._id}}">
+                        Đã Thanh Toán
+                    </button>
+
+                    <!--                    <button type="button" class="btn btn-danger" style="font-weight: bold"-->
+                    <!--                            data-bs-toggle="modal" id="btn_deleteOrder" name="btn_deleteOrder"-->
+                    <!--                            data-bs-target="#modalDelete"-->
+                    <!--                            data-id="{{this.id}}">-->
+                    <!--                        Hủy Order-->
+                    <!--                    </button>-->
+
+                                        <button type="button" class="btn btn-danger" style="font-weight: bold"
+                                                data-bs-toggle="modal" id="btn_DoneOrder" name="btn_DoneOrder"
+                                                data-bs-target="#modalStatus"
+                                                data-id="{{this._id}}">
+                                            Huỷ
+                                        </button>
+                </td>
+
+            </tr>
+
+        {{else}}
+            <tr>
+                <h4 colspan="9" class="text-center" style="color: darkred ; margin-top: 30px">Bạn chưa có lịch Order nào
+                    !
+                </h4>
+            </tr>
+        {{/each}}
+
+        <!--        data-bs-toggle="modal" data-bs-target="#exampleModal"-->
+
+        </tbody>
+    </table>
+    <div id="divPagination"></div>
+</div>
+
+
+<div class="modal fade" id="modal_XacNhan" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"> Dịch Vụ Này Đã Được Thanh Toán? </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+
+            <div class="modal-footer">
+                <form name="XacNhanOrder" class="modal-footer" method="post">
+                </form>
+
+                <a id="btn_XacNhan" type="button" class="btn btn-warning">Xác Nhận</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--<div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel"-->
+<!--     aria-hidden="true">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h1 class="modal-title fs-5" id="exampleModalLabel"> Bạn Muốn Xóa Đơn Đặt Lịch Này? </h1>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal"-->
+<!--                        aria-label="Close"></button>-->
+<!--            </div>-->
+
+<!--            <div class="modal-footer">-->
+<!--                <form name="DeleteOrder" class="modal-footer" method="post">-->
+<!--                </form>-->
+
+<!--                <a id="btn_Xoa" type="button" class="btn btn-danger">Xóa</a>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="modal fade" id="modalStatus" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"> Bạn Muốn Huỷ Đặt Lịch Này? </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+
+            <div class="modal-footer">
+                <form name="DoneOrder" class="modal-footer" method="post">
+                </form>
+
+                <a id="btn_DONE" type="button" class="btn btn-danger">Huỷ Đặt Lịch</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+
+    const table = document.getElementById("table_main")
+    const xacnhan = table.querySelectorAll('button.btn-warning')
+    const btn_done = table.querySelectorAll('button.btn-danger')
+    // const btn_delete = table.querySelectorAll('button.btn-danger')
+    const td_status = table.querySelectorAll('td.text-left')
+    const td_tien = table.querySelectorAll('td.text-right')
+
+    const td_dates = table_main.querySelectorAll('td.time')
+
+    var list_status = [td_status.length];
+    let tien;
+    let format_tien;
+
+    for (let i = 0; i < td_status.length; i++) {
+        if (td_status[i].innerHTML == 0) {
+            td_status[i].innerHTML = "Chưa thanh toán"
+            td_status[i].style.color = "#A9A400"
+            td_status[i].style.fontWeight = "bold"
+        } else if (td_status[i].innerHTML == 1) {
+            td_status[i].innerHTML = "Đã Thanh Toán"
+            td_status[i].style.color = "#169A12"
+            td_status[i].style.fontWeight = "bold"
+        }
+        else if(td_status[i].innerHTML == 2){
+            td_status[i].innerHTML = "Đã Huỷ"
+            td_status[i].style.color = "#AF1C1C"
+            td_status[i].style.fontWeight = "bold"
+        }
+
+        tien = td_tien[i].innerHTML;
+        format_tien = tien.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        td_tien[i].innerHTML = format_tien;
+    }
+
+    for (let i = 0; i < td_status.length; i++) {
+        if (td_status[i].innerHTML == "Chưa thanh toán") {
+            list_status[i] = 0;
+        } else if (td_status[i].innerHTML == "Đã Thanh Toán") {
+            list_status[i] = 1;
+        }
+        else if(td_status[i].innerHTML == "Đã Huỷ"){
+            list_status[i] = 2;
+        }
+    }
+
+
+    for (let i = 0; i < list_status.length; i++) {
+
+        if (list_status[i] == 0) {
+
+            xacnhan[i].hidden = false;
+            btn_done[i].hidden = false;
+            // btn_delete[i].hidden = true;
+
+        } else if (list_status[i] == 1) {
+            xacnhan[i].hidden = true;
+            btn_done[i].hidden = true;
+            // btn_delete[i].hidden = false;
+
+        }
+        else if(list_status[i] == 2){
+            xacnhan[i].hidden = true;
+            btn_done[i].hidden = true;
+            // btn_delete[i].hidden = true;
+
+        }
+    }
+
+
+    /*   ----------------       khi click btn Xác Nhân       -----------------------      */
+
+
+    let modalXacNhan = document.getElementById("modal_XacNhan");
+    let btn_xacnhan = document.getElementById("btn_XacNhan");
+    let XacNhanOrder = document.forms['XacNhanOrder'];
+
+    modalXacNhan.addEventListener('show.bs.modal', function (event) {
+        let button = event.relatedTarget;
+        let id = button.getAttribute('data-id');
+        btn_xacnhan.onclick = function () {
+            XacNhanOrder.action = '/order/status/' + id + '?_method=PUT';
+            XacNhanOrder.submit();
+        }
+    })
+
+
+    /*   ----------------       khi click btn Xóa       -----------------------      */
+
+
+    // let modalDelete = document.getElementById("modalDelete");
+    // let btn_Xoa = document.getElementById("btn_Xoa");
+    // let DeleteOrder = document.forms['DeleteOrder'];
+    //
+    // modalDelete.addEventListener('show.bs.modal', function (event) {
+    //     let button = event.relatedTarget
+    //     let id = button.getAttribute('data-id')
+    //     btn_Xoa.onclick = function () {
+    //         DeleteOrder.action = '/order/delete/' + id + '?_method=DELETE';
+    //         DeleteOrder.submit();
+    //     }
+    // })
+
+
+    /*   ----------------       khi click btn hoàn thành       -----------------------      */
+
+    let modalStatus = document.getElementById("modalStatus");
+    let btn_Done = document.getElementById("btn_DONE");
+    let DoneOrder = document.forms['DoneOrder'];
+
+    modalStatus.addEventListener('show.bs.modal', function (event) {
+        let button = event.relatedTarget
+        let id = button.getAttribute('data-id')
+        btn_Done.onclick = function () {
+            DoneOrder.action = '/order/status/' + id + '?_method=POST';
+            DoneOrder.submit();
+        }
+    })
+
+
+    const addZero = (number, length = 2) => {
+        var my_string = "" + number
+        while (my_string.length < length) {
+            my_string = "0" + my_string
+        }
+        return my_string
+    }
+    const format_date = (str_date, str_format = "YYYY-MM-dd") => {
+        const date = new Date(str_date)
+        if (!str_date || date == 'Invalid Date') return str_date
+
+        const year = date.getFullYear()
+        const month = addZero(date.getMonth() + 1)
+        const day = addZero(date.getDate())
+
+        const hour = addZero(date.getHours())
+        const minutes = addZero(date.getMinutes())
+        const seconds = addZero(date.getSeconds())
+
+
+        str_format = str_format.replace('YYYY', year)
+                .replace('yyyy', year)
+                .replace('MM', month)
+                .replace('dd', day)
+                .replace('HH', hour)
+                .replace('mm', minutes)
+                .replace('ss', seconds)
+        return str_format
+    }
+
+    for (let i = 0; i < td_dates.length; i++) {
+        const string_date = td_dates[i].innerHTML
+        td_dates[i].innerHTML = format_date(string_date, "HH:mm:ss dd/MM/yyyy")
+    }
+    const CLASS_PAGE_ITEM = `page-item`
+    const CLASS_PAGE_ITEM_ACTIVE = `page-item active`
+    const CLASS_PAGE_LINK = `page-link`
+    const length = {{length}}
+    const count = {{count}}
+    const current_page = {{page}}
+            limit = {{limit}}
+                    function pagination2(total_count, curent_page, length, div_pagination = `divPagination`, isShow = 3) {
+                        const from_STT = (curent_page - 1) * limit + 1
+                        const to_STT = (curent_page - 1) * limit + length
+                        page = parseInt(curent_page)
+                        if (parseInt(limit) == 0) {
+                            limit = 10
+                        }
+                        // document.querySelector('.pagination-content').innerHTML = `Đang hiển thị từ ${from_STT} -> ${to_STT} của ${total_count}`
+
+                        if(page == 1 && length == total_count) return
+                        let pagePatigation = `<div class="row"><div class="col-12 col-sm-6"><div class="info-block"><ul class="pagination pagination-primary">`
+
+
+
+                        const total_page = Math.ceil(parseInt(total_count) / parseInt(limit))
+                        // console.log(`total_page:`, total_page)
+                        if (total_page > 1) {
+                            if (page > 1) {
+                                //first page
+                                pagePatigation += `<li onclick="changeOffset_1(0)" class="${CLASS_PAGE_ITEM}" ><a href="javascript:void(0);" class="${CLASS_PAGE_LINK}"><<</a></li>`
+                                //previouse page
+                                pagePatigation += `<li onclick="previousPage()" class="${CLASS_PAGE_ITEM} previous"  ><a href="javascript:void(0);" class="${CLASS_PAGE_LINK}"><span aria-hidden="true"><</span></a></li>`
+                            } else {
+                                if (page == 1) {
+                                    //first page
+                                    pagePatigation += `<li class="${CLASS_PAGE_ITEM} disabled"><a href="javascript:void(0);"  class="${CLASS_PAGE_LINK}"><<</a></li>`
+                                } else {
+                                    //first page
+                                    pagePatigation += `<li class="${CLASS_PAGE_ITEM}"><a href="javascript:void(0);"  class="${CLASS_PAGE_LINK}"><<</a></li>`
+                                }
+                            }
+                            //pages
+                            if (total_page <= 1 + isShow * 2) {
+                                for (let i = 0; i < total_page - 1; i++) {
+                                    if (i == page - 1) {
+                                        pagePatigation += `<li onclick="changeOffset_1(${i})" class="${CLASS_PAGE_ITEM_ACTIVE}"><a href="javascript:void(0);"  class="${CLASS_PAGE_LINK}">${i + 1}</a></li>`
+                                    } else {
+                                        pagePatigation += `<li onclick="changeOffset_1(${i})" class="${CLASS_PAGE_ITEM}"><a href="javascript:void(0);" class="${CLASS_PAGE_LINK}">${i + 1}</a></li>`
+                                    }
+                                }
+                            } else {
+                                //enough pages to hide some
+                                //close to beginning; only hide later pages
+                                if (page <= isShow) {
+                                    for (let i = 0; i < isShow + 1; i++) {
+                                        if (i == page - 1) {
+                                            pagePatigation += `<li  onclick="changeOffset_1(${i})" class="${CLASS_PAGE_ITEM_ACTIVE}"><a href="javascript:void(0);"  class="${CLASS_PAGE_LINK}">${i + 1}</a></li>`
+                                        } else {
+                                            pagePatigation += `<li onclick="changeOffset_1(${i})" class="${CLASS_PAGE_ITEM}"><a href="javascript:void(0);" class="${CLASS_PAGE_LINK}">${i + 1}</a></li>`
+                                        }
+                                    }
+                                    pagePatigation += `<li onclick="changeOffset_1(${Math.round((page + total_page) / 2)})" class="${CLASS_PAGE_ITEM}"><a href="javascript:void(0);" class="${CLASS_PAGE_LINK}">...</a></li>`
+                                } else if (total_page - isShow > page && page > isShow) {
+                                    //in middle; hide some front and some back
+                                    //page 1
+                                    pagePatigation += `<li onclick="changeOffset_1(${0})" class="${CLASS_PAGE_ITEM}"><a href="javascript:void(0);"  class="${CLASS_PAGE_LINK}">${1}</a></li>`
+                                    //...
+                                    pagePatigation += `<li onclick="changeOffset_1(${Math.round(page / 2)})" class="${CLASS_PAGE_ITEM}"><a href="javascript:void(0);" class="${CLASS_PAGE_LINK}">...</a></li>`
+                                    for (let i = page - 2; i < page + 1; i++) {
+                                        if (i == page - 1) {
+                                            pagePatigation += `<li onclick="changeOffset_1(${i})" class="${CLASS_PAGE_ITEM_ACTIVE}"><a href="javascript:void(0);" class="${CLASS_PAGE_LINK}">${i + 1}</a></li>`
+                                        } else {
+                                            pagePatigation += `<li onclick="changeOffset_1(${i})" class="${CLASS_PAGE_ITEM}"><a href="javascript:void(0);"  class="${CLASS_PAGE_LINK}">${i + 1}</a></li>`
+                                        }
+                                    }
+                                    //...
+                                    pagePatigation += `<li onclick="changeOffset_1(${Math.round((page + total_page) / 2)})" class="${CLASS_PAGE_ITEM}"><a href="javascript:void(0);" class="${CLASS_PAGE_LINK}">...</a></li>`
+                                } else {
+                                    //close to end; only hide early pages
+                                    //page 1
+                                    pagePatigation += `<li onclick="changeOffset_1(${0})" class="${CLASS_PAGE_ITEM}"><a href="javascript:void(0);" class="${CLASS_PAGE_LINK}">${1}</a></li>`
+                                    //...
+                                    pagePatigation += `<li onclick="changeOffset_1(${Math.round(page / 2)})" class="${CLASS_PAGE_ITEM}"><a href="javascript:void(0);" class="${CLASS_PAGE_LINK}">...</a></li>`
+                                    for (let i = total_page - isShow - 1; i < total_page - 1; i++) {
+                                        if (i == page - 1) {
+                                            pagePatigation += `<li onclick="changeOffset_1(${i})" class="${CLASS_PAGE_ITEM_ACTIVE}"><a href="javascript:void(0);" class="${CLASS_PAGE_LINK}">${i + 1}</a></li>`
+                                        } else {
+                                            pagePatigation += `<li onclick="changeOffset_1(${i})" class="${CLASS_PAGE_ITEM}"><a href="javascript:void(0);" class="${CLASS_PAGE_LINK}">${i + 1}</a></li>`
+                                        }
+                                    }
+                                }
+                            }
+                            //next button
+                            if (page < total_page) {
+                                pagePatigation += `<li onclick="changeOffset_1(${total_page - 1})" class="${CLASS_PAGE_ITEM}"><a href="javascript:void(0);"  class="${CLASS_PAGE_LINK}">${total_page}</a></li>`
+                                pagePatigation += `<li onclick="nextPage()" class="${CLASS_PAGE_ITEM} next"><a href="javascript:void(0);" class="${CLASS_PAGE_LINK}"><span aria-hidden="true">></span></a></li>`
+                                //last page
+                                pagePatigation += `<li onclick="changeOffset_1(${total_page - 1})" class="${CLASS_PAGE_ITEM}"><a href="javascript:void(0);"  tabindex="10" class="${CLASS_PAGE_LINK}">>></a></li>`
+                            } else {
+                                pagePatigation += `<li onclick="changeOffset_1(${total_page - 1})" class="${CLASS_PAGE_ITEM_ACTIVE}"><a href="javascript:void(0);"  class="${CLASS_PAGE_LINK}">${total_page}</a></li>`
+                                pagePatigation += `<li class="${CLASS_PAGE_ITEM} disabled"><a href="javascript:void(0);" class="${CLASS_PAGE_LINK}">>></a></li>`
+                            }
+                        } else {
+                            pagePatigation += `<li onclick="changeOffset_1(${0})" class="${CLASS_PAGE_ITEM_ACTIVE}"><a href="javascript:void(0);" class="${CLASS_PAGE_LINK}">${1}</a></li>`
+                        }
+
+                        pagePatigation += `
+                        </ul></div></div>
+                            <div class="col-12 col-sm-6 text-end">
+                                <div class="pagination-content"><span class="f-w-600">Đang hiển thị từ ${from_STT} -> ${to_STT} của ${total_count}</span></div>
+                            </div>
+                        </div>
+    `
+                        // $("#pagePatigation").addClass("mb-3");
+                        $(`#${div_pagination}`).html(pagePatigation)
+                    }
+
+    pagination2(count, current_page, length)
+    function previousPage() {
+        const page_change = page - 1
+        let theURL
+        theURL = new URL(`${window.location.href}`)
+        theURL.searchParams.set("page", page_change)
+        // console.log(theURL.toString());
+        window.location = theURL
+    }
+    function changeOffset_1(index) {
+        const page_change = index + 1
+        let theURL
+        theURL = new URL(`${window.location.href}`)
+        theURL.searchParams.set("page", page_change)
+        // console.log(theURL.toString());
+        window.location = theURL
+
+    }
+    function nextPage() {
+        const page_change = page + 1
+        let theURL
+        theURL = new URL(`${window.location.href}`)
+        theURL.searchParams.set("page", page_change)
+        // console.log(theURL.toString());
+        window.location = theURL
+    }
+    const td_indexs = document.querySelectorAll('.stt')
+    td_indexs.forEach( (  item, index) =>{
+        // console.log(index , index+ (current_page)*limit)
+        item.innerHTML =  index+1 + (current_page - 1)*limit
+    })
+</script>

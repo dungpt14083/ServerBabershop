@@ -1,0 +1,66 @@
+<section class="vh-75 bg-image mt-5">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" style="color: rgb(109, 136, 14);">
+                                LOGIN</p>
+                            <form id="form-login" method="post">
+
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form1Example1">Số điện thoại</label>
+                                    <input type="text" name="adphone" id="adphone" class="form-control"/>
+                                    <span class="form-message"></span>
+                                </div>
+
+                                <!-- Password input -->
+                                <div class="form-outline mb-4" id="div_password">
+                                    <label class="form-label" for="form1Example2">Mật khẩu</label>
+                                    <input type="password" name="adpass" id="adpass" class="form-control"/>
+                                    <span class="form-message"></span>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-primary">LOGIN</button>
+                                </div>
+                                <!--                                <button  class="btn btn-success btn-block">LOGIN</button>-->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{#if error}}
+        <script>
+            alert('{{error}}')
+        </script>
+    {{/if}}
+</section>
+
+<!--<script>-->
+<!--    $.ajax({-->
+<!--        url:'/admin/login',-->
+<!--        type:'GET',-->
+<!--        success: function (data){-->
+
+<!--            alert(data.message);-->
+<!--            console.log(data.message)-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+<script src="/stylesheets/validator.js"></script>
+<script>
+
+    Validator({
+        form: '#form-login',
+        errSelector: '.form-message',
+        rules: [
+            Validator.isRequired('#adphone', 'Số điện thoại không được để trống'),
+            Validator.isPhone('#adphone', 'Bạn phải nhập số điện thoại'),
+            Validator.minLength('#adphone', 10, 'Số điện thoại phải đủ 10 số'),
+            Validator.isRequired('#adpass', 'Mật khẩu không được để trống'),
+        ],
+    })
+</script>

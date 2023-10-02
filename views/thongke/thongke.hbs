@@ -1,0 +1,1327 @@
+<section>
+    <p class="text-center font_SemiBold"
+       style=" font-size: 32px ; color: white ; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: #217C77">BẢNG
+        THỐNG KÊ CỬA HÀNG HAIRCUT</p><br>
+
+    <div class="row my-3 align-center">
+
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card" style="background-color: #3EE0A6 ; height: 600px">
+
+                <div class="card-header" style="max-height:150px">
+                    <p class=" font_SemiBold text-center" style="color: white ; font-size: 20px" id="td_order">Số Lượng
+                        Đặt Lịch</p>
+                    <p class=" font_SemiBold text-center" style="color: white ; font-size: 20px" id="date_order"></p>
+                </div>
+
+                <div class="card-body row my-2" style="min-height: 330px">
+                    <div class="col-12 col-md-6 col-lg-9 mb-9 mb-lg-0">
+                        <p class="card-title font_SemiBold" style="color: white ; font-size: 45px" id="count_order"></p>
+                        <p class="card-title font_SemiBold" style="color: white ; font-size: 20px">Dự Thu</p>
+                        <p class="card-title font_SemiBold" style="color: white ; font-size: 40px" id="duthu"></p>
+                        <p class="card-title font_SemiBold" style="color: white ; font-size: 20px">Thực Thu</p>
+                        <p class="card-title font_SemiBold" style="color: white ; font-size: 40px" id="thucthu"></p>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0 align-center">
+                        <img style="width: 75px; height: 75px"
+                             src="https://cdn-icons-png.flaticon.com/512/8017/8017357.png">
+                    </div>
+                </div>
+
+                <div class=" card-body col my-2">
+                    <div class="row my-1">
+                        <button type="submit" class="btn btn-outline-danger col-12 col-md-6 col-lg-12 mb-12 mb-lg-0"
+                                onclick="thongke_OrderMonth()">Trong Tháng
+                        </button>
+                    </div>
+                    <div class="row my-1">
+                        <button type="button" class="btn btn-outline-danger col-12 col-md-6 col-lg-12 mb-12 mb-lg-0"
+                                data-bs-toggle="modal" data-bs-target="#modalOrder">Tùy Chỉnh
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card" style="background-color: #B896FF ; height: 600px">
+
+                <div class="card-header" style="max-height:150px">
+                    <p class="font_SemiBold text-center" style="color: white ; font-size: 20px" id="td_service">
+                        Dịch Vụ Được Chọn Nhiều Nhất</p>
+                    <p class=" font_SemiBold text-center" style="color: white ; font-size: 20px" id="date_service"></p>
+                </div>
+
+                <div class="card-body row my-2" style="min-height: 330px">
+                    <div class="col-12 col-md-6 col-lg-9 mb-9 mb-lg-0">
+                        <p class="card-title font_SemiBold" style="color: white ; font-size: 35px" id="nameService"></p>
+                        <p class="card-title font_SemiBold" style="color: white ; font-size: 20px"> Số Lượt </p>
+                        <p class="card-title font_SemiBold" style="color: white ; font-size: 35px" id="sl_Service"></p>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0 align-center">
+                        <img style="width: 80px; height: 80px ; border-radius: 50px"
+                             src="https://t4.ftcdn.net/jpg/00/97/48/05/240_F_97480579_ZCHVKmRiDtATlLtr7ZQDjK5MxV4HXnhx.jpg">
+                    </div>
+                </div>
+
+                <div class=" card-body col my-2">
+                    <div class="row my-2">
+                        <button type="submit" class="btn btn-outline-primary col-12 col-md-6 col-lg-12 mb-12 mb-lg-0"
+                                onclick="thongke_Service_Month()">Trong Tháng
+                        </button>
+                    </div>
+                    <div class="row my-1">
+                        <button type="submit" class="btn btn-outline-primary col-12 col-md-6 col-lg-12 mb-12 mb-lg-0"
+                                data-bs-toggle="modal" data-bs-target="#modalService">Tùy Chỉnh
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card" style="background-color: #47A6BD ; height: 600px">
+
+                <div class="card-header" style="max-height:150px">
+                    <p class=" font_SemiBold text-center" style="color: white ; font-size: 20px" id="td_stylist">
+                        Stylist Được Yêu Thích Nhất</p>
+                    <p class=" font_SemiBold text-center" style="color: white ; font-size: 15px" id="date_stylist"></p>
+                </div>
+
+                <div class="card-body row my-2" style="min-height: 330px">
+                    <div class="col-12 col-md-6 col-lg-9 mb-9 mb-lg-0">
+                        <p class="card-title font_SemiBold" style="color: white ; font-size: 30px" id="nameStylist"></p>
+                        <p class="card-title font_SemiBold" style="color: white ; font-size: 20px"> Số Lượt </p>
+                        <p class="card-title font_SemiBold" style="color: white ; font-size: 30px" id="sl_Stylist"></p>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0 align-center">
+                        <img style="width: 75px; height: 75px"
+                             src="https://cdn-icons-png.flaticon.com/512/5165/5165788.png">
+                    </div>
+                </div>
+
+                <div class=" card-body col my-2">
+                    <div class="row my-2">
+                        <button type="submit" class="btn btn-outline-warning col-12 col-md-6 col-lg-12 mb-12 mb-lg-0"
+                                onclick="thongke_Stylist_Month()">Trong Tháng
+                        </button>
+                    </div>
+                    <div class="row my-1">
+                        <button type="submit" class="btn btn-outline-warning col-12 col-md-6 col-lg-12 mb-12 mb-lg-0"
+                                data-bs-toggle="modal" data-bs-target="#modalStylist">Tùy Chỉnh
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!--                   Modal Order                   -->
+
+<div class="modal fade" id="modalOrder" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Form Custom Thống Kê Order</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <p class="font_SemiBold" style="font-size: 20px">Từ Ngày</p>
+
+                <div class="form-outline col-9 col-lg-4 align-center">
+                    <input type="date" id="tungay_order" name="tungay_order"
+                           class=" form-control form-control-md "/>
+                </div>
+                <br>
+
+                <p class="font_SemiBold" style="font-size: 20px">Đến Ngày</p>
+
+                <div class="form-outline col-9 col-lg-4 align-center">
+                    <input type="date" id="denngay_order" name="denngay_order"
+                           class=" form-control form-control-md "/>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" onclick="custom_Order()">Thống Kê
+                    Order
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!--                   Modal Service                   -->
+
+<div class="modal fade" id="modalService" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Form Custom Thống Kê Service</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <p class="font_SemiBold" style="font-size: 20px">Từ Ngày</p>
+
+                <div class="form-outline col-9 col-lg-4">
+                    <input type="date" id="tungay_ser" name="tungay_ser"
+                           class=" form-control form-control-md "/>
+                </div>
+
+                <p class="font_SemiBold" style="font-size: 20px">Đến Ngày</p>
+
+                <div class="form-outline col-9 col-lg-4">
+                    <input type="date" id="denngay_ser" name="denngay_ser"
+                           class=" form-control form-control-md "/>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="customService()">Thống Kê
+                    Service
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--                   Modal Stylist                   -->
+
+<div class="modal fade" id="modalStylist" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Form Custom Thống Kê Stylist</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <p class="font_SemiBold" style="font-size: 20px">Từ Ngày</p>
+
+                <div class="form-outline col-9 col-lg-4">
+                    <input type="date" id="tungay_sty" name="tungay_sty"
+                           class=" form-control form-control-md "/>
+                </div>
+
+                <p class="font_SemiBold" style="font-size: 20px">Đến Ngày</p>
+
+                <div class="form-outline col-9 col-lg-4">
+                    <input type="date" id="denngay_sty" name="denngay_sty"
+                           class=" form-control form-control-md "/>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="customStylist()">Thống Kê
+                    Stylist
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    const addZero = (number, length = 2) => {
+        var my_string = "" + number
+        while (my_string.length < length) {
+            my_string = "0" + my_string
+        }
+        return my_string
+    }
+    const format_date = (str_date, str_format = "YYYY-MM-dd") => {
+        const date = new Date(str_date)
+        if (!str_date || date == 'Invalid Date') return str_date
+
+        const year = date.getFullYear()
+        const month = addZero(date.getMonth() + 1)
+        const day = addZero(date.getDate())
+
+        const hour = addZero(date.getHours())
+        const minutes = addZero(date.getMinutes())
+        const seconds = addZero(date.getSeconds())
+
+
+        str_format = str_format.replace('YYYY', year)
+                .replace('yyyy', year)
+                .replace('MM', month)
+                .replace('dd', day)
+                .replace('HH', hour)
+                .replace('mm', minutes)
+                .replace('ss', seconds)
+        return str_format
+    }
+
+    let dem = -1;
+    let dem_stylist = -1;
+    let dem_Service = -1;
+
+    const today = new Date();
+
+    let t2 = format_date(today.toString(), "HH:mm:ss dd/MM/yyyy");
+    let t_day = t2.substring(9, t2.length);
+    let t_month = t2.substring(12, t2.length);
+
+    const list_order = new Array();
+
+    const list_stylist = new Array();
+
+    const list_Service = new Array();
+
+
+        {{#each listStylist}}
+
+        dem_stylist++;
+        list_stylist[dem_stylist] = {
+
+            id: "{{this._id}}",
+            name: "{{this.nameStylist}}",
+            soluong: 0,
+
+            change_sl: function () {
+                this.soluong++;
+            }
+        }
+
+        {{/each}}
+
+
+        {{#each listOrder}}
+
+        dem++;
+
+        list_order[dem] = {
+            idService: "{{this.serviceIds}}",
+            idStylist: "{{this.stylistId}}",
+            time_order: format_date("{{this.time}}", "HH:mm:ss dd/MM/yyyy"),
+            price_order:{{this.sumPrice}},
+            status_order:{{this.status}}
+        }
+
+        {{/each}}
+
+
+        {{#each listServices}}
+
+        dem_Service++;
+
+        list_Service[dem_Service] = {
+            id: "{{this._id}}",
+            name_Service: "{{this.nameService}}",
+            price_Service:{{this.price}},
+            soluong: 0,
+
+            change_sl: function () {
+                this.soluong++;
+            }
+        }
+
+        {{/each}}
+
+
+    let check;
+
+    function check_Day(tu_day, tu_month, tu_year, den_day, den_month, den_year) {
+
+        if (tu_day != "" && tu_month != "" && tu_year != "" && den_day != "" && den_month != "" && den_year != "") {
+
+
+            if (Number(den_month) == 2) {
+
+                if (Number(den_day) > 29) {
+
+                    check = "false";
+                    alert("loi t2");
+                    return;
+
+                } else if (Number(den_day) == 29) {
+
+                    if ((Number(den_year) % 4 == 0 && Number(den_year) % 100 != 0 && Number(den_year) % 400 != 0) || (Number(den_year) % 100 == 0 && Number(den_year) % 400 == 0)) {
+                    } else {
+                        check = "false";
+                        alert("loi t3");
+                        return;
+                    }
+
+                }
+            } else if (Number(den_month) == 4 || Number(den_month) == 6 || Number(den_month) == 9 || Number(den_month) == 11) {
+                if (Number(den_day) == 31) {
+                    check = "false";
+                    alert("loi t4");
+                    return;
+                }
+            }
+
+            if (Number(tu_month) == 2) {
+                if (Number(tu_day) > 29) {
+                    check = "false";
+                    alert("loi t5");
+                    return;
+
+                } else if (Number(tu_day) == 29) {
+
+                    if ((Number(tu_year) % 4 == 0 && Number(tu_year) % 100 != 0 && Number(tu_year) % 400 != 0) || (Number(tu_year) % 100 == 0 && Number(tu_year) % 400 == 0)) {
+
+                    } else {
+                        check = "false";
+                        alert("loi t6");
+                        return;
+                    }
+
+                }
+            } else if (Number(tu_month) == 4 || Number(tu_month) == 6 || Number(tu_month) == 9 || Number(tu_month) == 11) {
+                if (Number(tu_day) == 31) {
+                    check = "false";
+                    alert("loi t7");
+                    return;
+                }
+            }
+
+
+            if (Number(tu_year) > Number(den_year)) {
+                check = "false";
+                alert("loi t8");
+                return;
+            } else if (Number(tu_year) == Number(den_year)) {
+
+                if (Number(tu_month) > Number(den_month)) {
+                    check = "false";
+                    alert("loi t9");
+                    return;
+                } else if (Number(tu_month) == Number(den_month)) {
+                    if (Number(tu_day) > Number(den_day)) {
+                        check = "false";
+                        alert("loi t10");
+                        return;
+                    } else {
+                        check = "true";
+                        return;
+                    }
+
+                } else {
+                    check = "true";
+                    return;
+                }
+
+
+            } else {
+                check = "true";
+                return;
+            }
+
+        } else {
+            check = "false";
+            alert("loi t1");
+            return;
+        }
+
+    }
+
+    // ------------------- THỐNG KÊ STYLIST --------------------
+
+    function thongke_Stylist_Day() {
+
+        clear_listStylist();
+
+        let max = 0;
+
+        for (let i = 0; i < list_order.length; i++) {
+
+            if (list_order[i].time_order.includes(t_day)) {
+
+                for (let j = 0; j < list_stylist.length; j++) {
+
+                    if (list_order[i].idStylist == list_stylist[j].id) {
+
+                        list_stylist[j].change_sl();
+
+                    }
+                }
+
+            }
+
+        }
+
+        for (let i = 0; i < list_stylist.length; i++) {
+
+            if (list_stylist[i].soluong >= max) {
+                max = list_stylist[i].soluong;
+            }
+        }
+
+        const nameStylist = new Array();
+        let count = -1;
+
+        for (let i = 0; i < list_stylist.length; i++) {
+            if (list_stylist[i].soluong == max) {
+
+                count++;
+                nameStylist[count] = list_stylist[i].name;
+
+            }
+        }
+
+        var td = document.getElementById('td_stylist');
+        td.innerHTML = "Stylist Được Yêu Thích Nhất (On Day)";
+
+        var date = document.getElementById('date_stylist');
+        date.innerHTML = "";
+
+        if (max > 0) {
+
+            var day = document.getElementById('nameStylist');
+            day.innerHTML = nameStylist;
+
+            var tien = document.getElementById('sl_Stylist');
+            tien.innerHTML = max.toString();
+
+        } else {
+
+            var day = document.getElementById('nameStylist');
+            day.innerHTML = "Chưa có lịch nào";
+
+        }
+
+    }
+
+
+    function thongke_Stylist_Month() {
+
+        clear_listStylist();
+
+        let max = 0;
+
+        for (let i = 0; i < list_order.length; i++) {
+
+            if (list_order[i].time_order.includes(t_month)) {
+
+                for (let j = 0; j < list_stylist.length; j++) {
+
+                    if (list_order[i].idStylist == list_stylist[j].id) {
+
+                        list_stylist[j].change_sl();
+
+                    }
+                }
+
+            }
+
+        }
+
+        for (let i = 0; i < list_stylist.length; i++) {
+
+            if (list_stylist[i].soluong >= max) {
+                max = list_stylist[i].soluong;
+            }
+        }
+
+        const nameStylist = new Array();
+        let count = -1;
+
+        for (let i = 0; i < list_stylist.length; i++) {
+            if (list_stylist[i].soluong == max) {
+
+                count++;
+                nameStylist[count] = list_stylist[i].name + "\n";
+
+            }
+        }
+
+        var td = document.getElementById('td_stylist');
+        td.innerHTML = "Stylist Được Yêu Thích Nhất (On Month)";
+
+        var date = document.getElementById('date_stylist');
+        date.innerHTML = "";
+
+        if (max > 0) {
+
+            var day = document.getElementById('nameStylist');
+            day.innerHTML = nameStylist + "\n";
+
+            var tien = document.getElementById('sl_Stylist');
+            tien.innerHTML = max.toString();
+
+        } else {
+
+            var day = document.getElementById('day');
+            day.innerHTML = "Tháng này chưa có lịch nào ";
+
+        }
+
+    }
+
+
+    function clear_listStylist() {
+        for (let i = 0; i < list_stylist.length; i++) {
+            list_stylist[i].soluong = 0;
+        }
+    }
+
+    function customStylist() {
+
+        var t2 = document.getElementById('tungay_sty').value;
+        var t1 = document.getElementById('denngay_sty').value;
+
+        let den_day = t1.toString().substring(8, 11);
+        let den_month = t1.toString().substring(5, 7);
+        let den_year = t1.toString().substring(0, 4);
+
+        let tu_day = t2.toString().substring(8, 11);
+        let tu_month = t2.toString().substring(5, 7);
+        let tu_year = t2.toString().substring(0, 4);
+
+        check_Day(tu_day, tu_month, tu_year, den_day, den_month, den_year);
+
+        if (check == "true") {
+
+            clear_listStylist();
+
+            let max = 0;
+
+            let day, month, year;
+
+            for (let i = 0; i < list_order.length; i++) {
+
+                day = list_order[i].time_order.substring(9, 11);
+                month = list_order[i].time_order.substring(12, 14);
+                year = list_order[i].time_order.substring(15, 19);
+
+                if (Number(tu_year) < Number(year) && Number(year) < Number(den_year)) {
+                    for (let j = 0; j < list_stylist.length; j++) {
+
+                        if (list_order[i].idStylist == list_stylist[j].id) {
+
+                            list_stylist[j].change_sl();
+
+                        }
+                    }
+                } else if (Number(tu_year) == Number(year) && Number(year) < Number(den_year)) {
+
+                    if (Number(tu_month) < Number(month)) {
+                        for (let j = 0; j < list_stylist.length; j++) {
+
+                            if (list_order[i].idStylist == list_stylist[j].id) {
+
+                                list_stylist[j].change_sl();
+
+                            }
+                        }
+                    }
+                    if (Number(tu_month) == Number(month)) {
+                        if (Number(day) >= Number(tu_day)) {
+                            for (let j = 0; j < list_stylist.length; j++) {
+
+                                if (list_order[i].idStylist == list_stylist[j].id) {
+
+                                    list_stylist[j].change_sl();
+
+                                }
+                            }
+                        }
+                    }
+
+                } else if (Number(tu_year) < Number(year) && Number(year) == Number(den_year)) {
+                    if (Number(month) < Number(den_month)) {
+                        for (let j = 0; j < list_stylist.length; j++) {
+
+                            if (list_order[i].idStylist == list_stylist[j].id) {
+
+                                list_stylist[j].change_sl();
+
+                            }
+                        }
+                    }
+                    if (Number(den_month) == Number(month)) {
+                        if (Number(day) >= Number(tu_day)) {
+                            for (let j = 0; j < list_stylist.length; j++) {
+
+                                if (list_order[i].idStylist == list_stylist[j].id) {
+
+                                    list_stylist[j].change_sl();
+
+                                }
+                            }
+                        }
+                    }
+                } else if (Number(tu_year) == Number(year) && Number(year) == Number(den_year)) {
+                    if (Number(tu_month) < Number(month) && Number(month) < Number(den_month)) {
+                        for (let j = 0; j < list_stylist.length; j++) {
+
+                            if (list_order[i].idStylist == list_stylist[j].id) {
+
+                                list_stylist[j].change_sl();
+
+                            }
+                        }
+                    }
+                    if (Number(tu_month) == Number(month) && Number(den_month) == Number(month)) {
+                        if (Number(day) >= Number(tu_day)) {
+                            for (let j = 0; j < list_stylist.length; j++) {
+
+                                if (list_order[i].idStylist == list_stylist[j].id) {
+
+                                    list_stylist[j].change_sl();
+
+                                }
+                            }
+                        }
+                    } else if (Number(den_month) == Number(month) && Number(tu_month) < Number(month)) {
+                        if (Number(day) <= Number(den_day)) {
+                            for (let j = 0; j < list_stylist.length; j++) {
+
+                                if (list_order[i].idStylist == list_stylist[j].id) {
+
+                                    list_stylist[j].change_sl();
+
+                                }
+                            }
+                        }
+                    } else if (Number(tu_month) == Number(month) && Number(den_month) > Number(month)) {
+                        if (Number(day) >= Number(tu_month)) {
+                            for (let j = 0; j < list_stylist.length; j++) {
+
+                                if (list_order[i].idStylist == list_stylist[j].id) {
+
+                                    list_stylist[j].change_sl();
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+
+            }
+
+            for (let i = 0; i < list_stylist.length; i++) {
+
+                if (list_stylist[i].soluong > max) {
+                    max = list_stylist[i].soluong;
+                }
+            }
+
+            const nameStylist = new Array();
+            let count = -1;
+
+            for (let i = 0; i < list_stylist.length; i++) {
+                if (list_stylist[i].soluong == max) {
+
+                    count++;
+                    nameStylist[count] = list_stylist[i].name;
+
+                }
+            }
+
+            var td = document.getElementById('td_stylist');
+            td.innerHTML = "Stylist Được Yêu Thích Nhất";
+
+            var date = document.getElementById('date_stylist');
+            date.innerHTML = tu_day + "/" + tu_month + "/" + tu_year + " - " + den_day + "/" + den_month + "/" + den_year;
+
+            if (max > 0) {
+
+                var name = document.getElementById('nameStylist');
+                name.innerHTML = nameStylist;
+
+                var tien = document.getElementById('sl_Stylist');
+                tien.innerHTML = max.toString();
+
+            } else {
+
+                var name = document.getElementById('nameStylist');
+                name.innerHTML = "Chưa có lịch nào ";
+
+                var tien = document.getElementById('sl_Stylist');
+                tien.innerHTML = max.toString();
+
+            }
+
+        } else {
+            alert("Dữ Liệu Chưa Đúng!")
+        }
+
+    }
+
+    // ------------------- THỐNG KÊ SERVICE --------------------
+
+
+    function clear_listService() {
+        for (let i = 0; i < list_Service.length; i++) {
+            list_Service[i].soluong = 0;
+        }
+    }
+
+    function thongke_Service_Day() {
+
+        clear_listService();
+
+        let max = 0;
+
+        for (let i = 0; i < list_order.length; i++) {
+
+            if (list_order[i].time_order.includes(t_day)) {
+
+                for (let j = 0; j < list_Service.length; j++) {
+
+                    if (list_order[i].idService.includes(list_Service[j].id)) {
+
+                        list_Service[j].change_sl();
+
+                    }
+                }
+
+            }
+
+        }
+
+        for (let i = 0; i < list_Service.length; i++) {
+
+            if (list_Service[i].soluong > max) {
+                max = list_Service[i].soluong;
+            }
+        }
+
+        const thongke_service = new Array();
+        let count = -1;
+
+        for (let i = 0; i < list_Service.length; i++) {
+            if (list_Service[i].soluong == max) {
+
+                count++;
+                thongke_service[count] = list_Service[i].name_Service;
+
+            }
+        }
+
+        var td = document.getElementById('td_service');
+        td.innerHTML = "Dịch Vụ Được Chọn Nhiều Nhất (On Day)";
+
+        var date = document.getElementById('date_service');
+        date.innerHTML = "";
+
+        if (max > 0) {
+
+
+            var day = document.getElementById('nameService');
+            day.innerHTML = thongke_service;
+
+            var tien = document.getElementById('sl_Service');
+            tien.innerHTML = max.toString();
+
+        } else {
+
+            var day = document.getElementById('nameService');
+            day.innerHTML = "Chưa có dịch vụ nào";
+
+        }
+
+    }
+
+    function thongke_Service_Month() {
+
+        clear_listService();
+
+        let max = 0;
+
+        for (let i = 0; i < list_order.length; i++) {
+
+            if (list_order[i].time_order.includes(t_month)) {
+
+                for (let j = 0; j < list_Service.length; j++) {
+
+                    if (list_order[i].idService.includes(list_Service[j].id)) {
+
+                        list_Service[j].change_sl();
+
+                    }
+                }
+
+            }
+
+        }
+
+        for (let i = 0; i < list_Service.length; i++) {
+
+            if (list_Service[i].soluong > max) {
+                max = list_Service[i].soluong;
+            }
+        }
+
+        const thongke_service = new Array();
+        let count = -1;
+
+        for (let i = 0; i < list_Service.length; i++) {
+            if (list_Service[i].soluong == max) {
+
+                count++;
+                thongke_service[count] = list_Service[i].name_Service + "\n";
+
+            }
+        }
+
+        var td = document.getElementById('td_service');
+        td.innerHTML = "Dịch Vụ Được Chọn Nhiều Nhất (On Month)";
+
+        var date = document.getElementById('date_service');
+        date.innerHTML = "";
+
+        if (max > 0) {
+
+
+            var day = document.getElementById('nameService');
+            day.innerHTML = thongke_service;
+
+            var tien = document.getElementById('sl_Service');
+            tien.innerHTML = max.toString();
+
+        } else {
+
+            var day = document.getElementById('day');
+            day.innerHTML = "Tháng này chưa có dịch vụ nào";
+
+        }
+
+    }
+
+    function customService() {
+
+        var t2 = document.getElementById('tungay_ser').value;
+        var t1 = document.getElementById('denngay_ser').value;
+
+        let den_day = t1.toString().substring(8, 11);
+        let den_month = t1.toString().substring(5, 7);
+        let den_year = t1.toString().substring(0, 4);
+
+        let tu_day = t2.toString().substring(8, 11);
+        let tu_month = t2.toString().substring(5, 7);
+        let tu_year = t2.toString().substring(0, 4);
+
+        check_Day(tu_day, tu_month, tu_year, den_day, den_month, den_year);
+
+        if (check == "true") {
+
+            clear_listService();
+
+            let max = 0;
+
+            let day, month, year;
+
+            for (let i = 0; i < list_order.length; i++) {
+
+                day = list_order[i].time_order.substring(9, 11);
+                month = list_order[i].time_order.substring(12, 14);
+                year = list_order[i].time_order.substring(15, 19);
+
+
+                if (Number(tu_year) < Number(year) && Number(year) < Number(den_year)) {
+                    for (let j = 0; j < list_Service.length; j++) {
+
+                        if (list_order[i].idService.includes(list_Service[j].id)) {
+
+                            list_Service[j].change_sl();
+
+                        }
+                    }
+                }
+                else if (Number(tu_year) == Number(year) && Number(year) == Number(den_year)) {
+
+                    if (Number(tu_month) < Number(month) && Number(month) < Number(den_month)) {
+                        for (let j = 0; j < list_Service.length; j++) {
+
+                            if (list_order[i].idService.includes(list_Service[j].id)) {
+
+                                list_Service[j].change_sl();
+
+                            }
+                        }
+                    }
+                    if (Number(tu_month) == Number(month) && Number(den_month) == Number(month)) {
+                        if (Number(day) >= Number(tu_day) && Number(day) <= Number(den_day)) {
+                            for (let j = 0; j < list_Service.length; j++) {
+
+                                if (list_order[i].idService.includes(list_Service[j].id)) {
+
+                                    list_Service[j].change_sl();
+
+                                }
+                            }
+                        }
+                    }
+                    else if (Number(den_month) == Number(month) && Number(tu_month) < Number(month)) {
+                        if (Number(day) <= Number(den_day)) {
+                            for (let j = 0; j < list_Service.length; j++) {
+
+                                if (list_order[i].idService.includes(list_Service[j].id)) {
+
+                                    list_Service[j].change_sl();
+
+                                }
+                            }
+                        }
+                    }
+                    else if (Number(den_month) > Number(month) && Number(tu_month) == Number(month)) {
+                        if (Number(day) >= Number(tu_day)) {
+                            for (let j = 0; j < list_Service.length; j++) {
+
+                                if (list_order[i].idService.includes(list_Service[j].id)) {
+
+                                    list_Service[j].change_sl();
+
+                                }
+                            }
+                        }
+                    }
+
+                }
+                else if (Number(tu_year) < Number(year) && Number(year) == Number(den_year)) {
+
+                    if (Number(month) < Number(den_month)) {
+                        for (let j = 0; j < list_Service.length; j++) {
+
+                            if (list_order[i].idService.includes(list_Service[j].id)) {
+
+                                list_Service[j].change_sl();
+
+                            }
+                        }
+                    }
+                    if (Number(den_month) == Number(month)) {
+                        if (Number(den_day) >= Number(day)) {
+                            for (let j = 0; j < list_Service.length; j++) {
+
+                                if (list_order[i].idService.includes(list_Service[j].id)) {
+
+                                    list_Service[j].change_sl();
+
+                                }
+                            }
+                        }
+                    }
+
+                }
+                else if (Number(tu_year) == Number(year) && Number(year) < Number(den_year)) {
+                    if (Number(tu_month) < Number(month)) {
+                        for (let j = 0; j < list_Service.length; j++) {
+
+                            if (list_order[i].idService.includes(list_Service[j].id)) {
+
+                                list_Service[j].change_sl();
+
+                            }
+                        }
+                    }
+                    if (Number(tu_month) == Number(month)) {
+                        if (Number(tu_day) <= Number(day)) {
+                            for (let j = 0; j < list_Service.length; j++) {
+
+                                if (list_order[i].idService.includes(list_Service[j].id)) {
+
+                                    list_Service[j].change_sl();
+
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+
+            }
+
+
+            for (let i = 0; i < list_Service.length; i++) {
+
+                if (list_Service[i].soluong > max) {
+                    max = list_Service[i].soluong;
+                }
+            }
+
+            const thongke_service = new Array();
+            let count = -1;
+
+            for (let i = 0; i < list_Service.length; i++) {
+                if (list_Service[i].soluong == max) {
+
+                    count++;
+                    thongke_service[count] = list_Service[i].name_Service;
+
+                }
+            }
+
+            var td = document.getElementById('td_service');
+            td.innerHTML = "Dịch Vụ Được Chọn Nhiều Nhất";
+
+            var date = document.getElementById('date_service');
+            date.innerHTML = tu_day + "/" + tu_month + "/" + tu_year + " - " + den_day + "/" + den_month + "/" + den_year;
+
+            if (max > 0) {
+
+
+                var name = document.getElementById('nameService');
+                name.innerHTML = thongke_service;
+
+                var tien = document.getElementById('sl_Service');
+                tien.innerHTML = max.toString();
+
+            } else {
+
+                var name = document.getElementById('nameService');
+                name.innerHTML = "Chưa có dịch vụ nào";
+
+                var tien = document.getElementById('sl_Service');
+                tien.innerHTML = max.toString();
+
+            }
+
+        } else {
+            alert("Chưa Nhập Đúng Dữ Liệu")
+        }
+
+    }
+
+
+    // ------------------- THỐNG KÊ ORDER --------------------
+
+
+    function thongke_OrderDay() {
+
+        let sl_day = 0;
+        let duthu_day = 0;
+        let thucthu_day = 0;
+
+        for (let i = 0; i < list_order.length; i++) {
+
+            if (list_order[i].time_order.includes(t_day)) {
+
+                sl_day++;
+
+                if (list_order[i].status_order == 1) {
+                    thucthu_day += list_order[i].price_order;
+                }
+
+                if (list_order[i].status_order == 0) {
+                    duthu_day += list_order[i].price_order;
+                }
+            }
+
+        }
+
+        var td = document.getElementById('td_order');
+        td.innerHTML = "Số Lượng Đặt Lịch (On Day)";
+
+        var date = document.getElementById('date_order');
+        date.innerHTML = "";
+
+        var sl = document.getElementById('count_order');
+        sl.innerHTML = sl_day.toString();
+
+        var day = document.getElementById('duthu');
+        day.innerHTML = duthu_day.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "đ";
+
+        var day = document.getElementById('thucthu');
+        day.innerHTML = thucthu_day.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "đ";
+
+    }
+
+
+    function thongke_OrderMonth() {
+
+        let sl_month = 0;
+        let duthu_month = 0;
+        let thucthu_month = 0;
+
+        for (let i = 0; i < list_order.length; i++) {
+
+            if (list_order[i].time_order.includes(t_month)) {
+
+                sl_month++;
+
+                if (list_order[i].status_order == 0) {
+                    duthu_month += list_order[i].price_order;
+                }
+                if (list_order[i].status_order == 1) {
+                    thucthu_month += list_order[i].price_order;
+                }
+
+            }
+
+        }
+
+        var td = document.getElementById('td_order');
+        td.innerHTML = "Số Lượng Đặt Lịch (On Month)";
+
+        var date = document.getElementById('date_order');
+        date.innerHTML = "";
+
+        var sl = document.getElementById('count_order');
+        sl.innerHTML = sl_month.toString();
+
+        var day = document.getElementById('duthu');
+        day.innerHTML = duthu_month.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "đ";
+
+        var day = document.getElementById('thucthu');
+        day.innerHTML = thucthu_month.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "đ";
+
+    }
+
+    function custom_Order() {
+
+        var t2 = document.getElementById('tungay_order').value;
+        var t1 = document.getElementById('denngay_order').value;
+
+        let den_day = t1.toString().substring(8, 11);
+        let den_month = t1.toString().substring(5, 7);
+        let den_year = t1.toString().substring(0, 4);
+
+        let tu_day = t2.toString().substring(8, 11);
+        let tu_month = t2.toString().substring(5, 7);
+        let tu_year = t2.toString().substring(0, 4);
+
+        check_Day(tu_day, tu_month, tu_year, den_day, den_month, den_year);
+
+        if (check == "true") {
+
+            let sl_day = 0;
+            let duthu = 0;
+            let thucthu = 0;
+
+            let day, month, year;
+
+            for (let i = 0; i < list_order.length; i++) {
+
+                day = list_order[i].time_order.substring(9, 11);
+                month = list_order[i].time_order.substring(12, 14);
+                year = list_order[i].time_order.substring(15, 19);
+
+                if (Number(tu_year) < Number(year) && Number(year) < Number(den_year)) {
+
+                    sl_day++;
+
+                    if (list_order[i].status_order == 1) {
+                        thucthu += list_order[i].price_order;
+                    }
+
+                    if (list_order[i].status_order == 1) {
+                        duthu += list_order[i].price_order;
+                    }
+
+                }
+                else if (Number(tu_year) == Number(year) && Number(year) == Number(den_year)) {
+                    if (Number(tu_month) < Number(month) && Number(month) < Number(den_month)) {
+                        sl_day++;
+                        duthu += list_order[i].price_order;
+                        if (list_order[i].status_order == 1) {
+                            thucthu += list_order[i].price_order;
+                        }
+                    }
+                    if (Number(tu_month) == Number(month) && Number(den_month) == Number(month)) {
+                        if (Number(day) >= Number(tu_day) && Number(day) <= Number(den_day)) {
+                            sl_day++;
+                            duthu += list_order[i].price_order;
+                            if (list_order[i].status_order == 1) {
+                                thucthu += list_order[i].price_order;
+                            }
+                        }
+                    } else if (Number(den_month) == Number(month) && Number(month) > Number(tu_month)) {
+                        if (Number(day) <= Number(den_day)) {
+                            sl_day++;
+                            duthu += list_order[i].price_order;
+                            if (list_order[i].status_order == 1) {
+                                thucthu += list_order[i].price_order;
+                            }
+                        }
+                    } else if (Number(tu_month) == Number(month) && Number(month) < Number(den_month)) {
+                        if (Number(day) >= Number(den_day)) {
+                            sl_day++;
+                            duthu += list_order[i].price_order;
+                            if (list_order[i].status_order == 1) {
+                                thucthu += list_order[i].price_order;
+                            }
+                        }
+                    }
+                }
+                else if (Number(tu_year) == Number(year) && Number(year) < Number(den_year)) {
+                    if (Number(tu_month) < Number(month)) {
+                        sl_day++;
+                        duthu += list_order[i].price_order;
+                        if (list_order[i].status_order == 1) {
+                            thucthu += list_order[i].price_order;
+                        }
+                    }
+                    if (Number(tu_month) == Number(month)) {
+                        if (Number(day) >= Number(tu_day)) {
+                            sl_day++;
+                            duthu += list_order[i].price_order;
+                            if (list_order[i].status_order == 1) {
+                                thucthu += list_order[i].price_order;
+                            }
+                        }
+                    }
+                }
+                else if (Number(tu_year) < Number(year) && Number(year) == Number(den_year)) {
+                    if (Number(month) < Number(den_month)) {
+                        sl_day++;
+                        duthu += list_order[i].price_order;
+                        if (list_order[i].status_order == 1) {
+                            thucthu += list_order[i].price_order;
+                        }
+                    }
+                    if (Number(den_month) == Number(month)) {
+                        if (Number(day) <= Number(den_day)) {
+                            sl_day++;
+                            duthu += list_order[i].price_order;
+                            if (list_order[i].status_order == 1) {
+                                thucthu += list_order[i].price_order;
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            var td = document.getElementById('td_order');
+            td.innerHTML = "Số Lượng Đặt Lịch";
+
+            var date = document.getElementById('date_order');
+            date.innerHTML = tu_day + "/" + tu_month + "/" + tu_year + " - " + den_day + "/" + den_month + "/" + den_year;
+
+            var sl = document.getElementById('count_order');
+            sl.innerHTML = sl_day.toString();
+
+            var dt = document.getElementById('duthu');
+            dt.innerHTML = duthu.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "đ";
+
+            var tt = document.getElementById('thucthu');
+            tt.innerHTML = thucthu.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "đ";
+
+        } else {
+            alert("Chưa Nhập Đúng Dữ Liệu");
+        }
+
+    }
+
+
+    window.onload = thongke_OrderDay();
+    window.onload = thongke_Service_Day();
+    window.onload = thongke_Stylist_Day();
+
+
+</script>
+

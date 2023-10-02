@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+          crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header>
+
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-light navbar-theme" style="border-bottom: 1px solid black">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-md-center" id="main-menu">
+            <ul class="navbar-nav mt-4">
+                <li class="nav-item active" style="margin-left: 50px">
+                    <a class="nav-link justify-content-md-center" href="/" style="color: black">
+                        Trang Chủ
+                        <img src="https://cdn-icons-png.flaticon.com/128/1144/1144760.png" style="width: 25px; height: 25px ; margin-left: 10px">
+                        </a>
+                </li>
+                <li class="nav-item" style="margin-left: 50px">
+                    <a class="nav-link" href="/service" style="color: black">Dịch vụ</a>
+                </li>
+                <li class="nav-item" style="margin-left: 50px">
+                    <a class="nav-link" href="/newfeed" style="color: black">Tin tức</a>
+                </li>
+                <li class="nav-item" style="margin-left: 50px">
+                    <a class="nav-link" href="/hairstylist" style="color: black">Thợ cắt tóc</a>
+                </li>
+                <li class="nav-item" style="margin-left: 50px">
+                    <a class="nav-link" href="/order" style="color: black">Danh sách đặt lịch</a>
+                </li>
+
+                <li class="nav-item" style="margin-left: 50px">
+                    <a class="nav-link" href="/customer" style="color: black">Tài khoản người dùng</a>
+                </li>
+                <li class="nav-item" style="margin-left: 50px ;  ">
+                    <div id="replaceButton">
+
+                    </div>
+<!--&lt;!&ndash;                    <a class="nav-link justify-content-md-center" href="/admin/login" style="color: black">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <img src="https://cdn-icons-png.flaticon.com/128/1144/1144760.png" style="width: 25px; height: 25px ; margin-right: 10px">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span id="status_login">Đăng nhập</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a class="nav-link justify-content-md-center" href="/admin/login" style="color: black">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <img src="https://cdn-icons-png.flaticon.com/128/1144/1144760.png" style="width: 25px; height: 25px ; margin-right: 10px">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span id="status_login">Đăng nhập</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </a>&ndash;&gt;-->
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+</header>
+
+
+<div style="margin-top: 100px">
+    {{{body}}}
+</div>
+<br>
+</body>
+<script src="/js/helper.js"></script>
+</html>

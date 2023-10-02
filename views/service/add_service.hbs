@@ -1,0 +1,76 @@
+<section class="vh-50 bg-image mt-3 mb-5">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3 mt-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-1">
+                            <form action="" method="post" id="form_AddService" class=" border border-light p-5"
+                                  enctype="multipart/form-data">
+                                <p class="h4 mb-4 text-center" style="font-size: 35px">Thêm dịch vụ</p>
+                                <!-- NameService -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example1cg">Tên dịch vụ</label>
+                                    <input type="text" id="nameService" class="form-control form-control-md"
+                                           placeholder="Tên dịch vụ" name="nameService">
+                                    <span class="form-message"></span>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <!-- PriceService -->
+                                    <label class="form-label" for="form3Example1cg">Giá dịch vụ (vnđ)</label>
+                                    <input type="text" id="price" class="form-control form-control-md" placeholder="Giá dịch vụ"
+                                           name="price">
+                                    <span class="form-message"></span>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <!-- TimeService -->
+                                    <label class="form-label" for="form3Example1cg">Thời gian (phút)</label>
+                                    <input type="number" id="workTime" class="form-control form-control-md"
+                                           placeholder="Thời gian" name="workTime">
+                                    <span class="form-message"></span>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example1cg">Mô tả</label>
+                                    <textarea name="describe" class="form-control rounded-0"
+                                              id="exampleFormControlTextarea2" rows="3" placeholder="Mô tả"></textarea>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example4cdg">Ảnh</label>
+                                    <input class="form-control form-control-lg" name="images" id="images" type="file"/>
+                                    <div class="small text-muted mt-2">Upload your photo, video or any related file.
+                                        Maximum file size 50 MB
+                                    </div>
+                                    <span class="form-message"></span>
+                                </div>
+
+                                <div class="d-flex justify-content-center mt-3">
+                                    <button type="submit" class="btn btn-warning"
+                                            style="background-color: #F9E323;font-weight: bold">Hoàn tất
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="/stylesheets/validator.js"></script>
+<script>
+
+    Validator({
+        form: '#form_AddService',
+        errSelector: '.form-message',
+        rules: [
+            Validator.isRequired('#nameService','Tên không được để trống'),
+            Validator.isRequired('#images','Ảnh không được để trống'),
+            Validator.isRequired('#price','Giá không được để trống'),
+            Validator.isRequired('#workTime','Thời gian không được để trống'),
+            Validator.isPhone('#workTime', 'Bạn phải nhập số phút và lớn hơn 0'),
+            Validator.isPhone('#price', 'Bạn phải nhập số tiền và lớn hơn 0'),
+        ],
+
+    })
+</script>

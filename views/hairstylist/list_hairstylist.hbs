@@ -1,0 +1,379 @@
+<div>
+    <form action="" method="post" name="formSearch">
+        <div class="row g-2">
+
+            <div class="form-outline col-auto col-md-2 ms-md-auto">
+                <div class="w-100">
+                    <input type="text" placeholder="Tên thợ cắt tóc" name="nameSearch"
+                           class=" form-control form-control-md "/>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <button type="submit" class="btn btn-warning" id="btnSearch"
+                        style="background-color: #F9E323;font-weight: bold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor"
+                         class="bi bi-search"
+                         viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="col-auto">
+                <a type="button" href="/hairstylist/add" class="btn btn-warning"
+                   style="background-color: #F9E323;font-weight: bold">Thêm mới</a>
+            </div>
+
+        </div>
+    </form>
+    <table id="table_main1" class="table table-responsive  table-hover table table-bordered " style="margin-top: 20px">
+        <thead>
+        <tr style="text-align: center">
+            <th scope="col">STT</th>
+            <th scope="col">Tên Stylist</th>
+            <th scope="col">Ảnh</th>
+            <th scope="col">Trạng thái</th>
+            <th scope="col">Mô tả</th>
+            <th scope="col">Chỉnh sửa</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each listStylist}}
+            <tr style="text-align: center">
+                <th scope="row">{{@index}}</th>
+                <td>{{this.nameStylist}}</td>
+                <td><img style="border-radius: 10px" width="60" height="55" src=" {{this.imageStylist}}"></td>
+                <td class="status_main">{{this.status}}</td>
+                <td style="white-space: nowrap; overflow: hidden; max-width: 200px; text-overflow: ellipsis;">{{this.description}}</td>
+                <td style="max-width: 50px">
+                    <button data-id="{{this.id}}" data-bs-toggle="modal"
+                            data-bs-target="#modalEdit" class="btn btn-warning editbtn"
+                            style="background-color: #F9E323;font-weight: bold">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor"
+                             class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd"
+                                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                        </svg>
+                    </button>
+                    <button class="btn btn-warning status1" data-id="{{this.id}}" data-bs-toggle="modal"
+                            data-bs-target="#modalStatus1" style="background-color: #F9E323;font-weight: bold">Bận
+                    </button>
+                    <button class="btn btn-warning status0" data-id="{{this.id}}" data-bs-toggle="modal"
+                            data-bs-target="#modalStatus0" style="background-color: #F9E323;font-weight: bold">Rảnh
+                    </button>
+                    <button class="btn btn-warning btnDetail" data-bs-toggle="modal"
+                            data-bs-target="#modalDetail" style="background-color: #F9E323;font-weight: bold"
+                            data-id="{{this.id}}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-three-dots" viewBox="0 0 16 16">
+                            <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                        </svg>
+
+                    </button>
+                    <button  class="btn btn-warning status2" data-id="{{this.id}}" data-bs-toggle="modal"
+                            data-bs-target="#modalStatus2" style="background-color: #fc4141;font-weight: bold;margin-top: 5px">Nghỉ làm
+                    </button>
+                </td>
+            </tr>
+        {{else}}
+            <tr>
+                <h4 colspan="9" class="text-center" style="color: darkred ; margin-top: 30px">Bạn chưa có thợ cắt tóc
+                    nào !
+                </h4>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+<!-- Confirm Delete -->
+<form method="post" name="form-status1"></form>
+<div class="modal" id="modalStatus1" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Trạng thái Stylist</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Stylist này bận?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnStatus1" class="btn btn-danger" data-bs-dismiss="modal">Xác nhận
+                </button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//ranh-->
+<form method="post" name="form-status0"></form>
+<div class="modal" id="modalStatus0" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Trạng thái Stylist</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Stylist này rảnh?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnStatus0" class="btn btn-danger" data-bs-dismiss="modal">Xác nhận
+                </button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//nghi lam-->
+<form method="post" name="form-status2"></form>
+<div class="modal" id="modalStatus2" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Trạng thái Stylist</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Stylist nghỉ việc?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnStatus2" class="btn btn-danger" data-bs-dismiss="modal">Xác nhận
+                </button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--modal edit-->
+<div class="modal" id="modalEdit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Sửa thợ cắt tóc</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form method="post" action="" name="form-edit" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Tên Stylist:</label>
+                        <input type="text" name="nameStylist" class="form-control" id="nameStylist">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Ảnh:</label>
+                        <input class="form-control" id="imageStylist" name="imageStylist" type="file"
+                               onchange="onFileSelected(event)">
+                        <img src="" id="SetImage" alt="Your retrived image is here" width="100" height="100">
+                        </input>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Mô tả:</label>
+                        <textarea class="form-control" name="description" placeholder="Nội dung ..."
+                                  id="description"></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" id="btnEditStylist" class="btn btn-danger btnEditStylist">Lưu lại
+                </button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hủy</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--Modal Detail-->
+<div class="modal" id="modalDetail">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Thông tin chi tiết</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form>
+
+                    <div class="form-group">
+                        <!--                        <label for="recipient-name" class="col-form-label">Ảnh:</label>-->
+                        <img style="border-radius: 10px" src="" id="imageDetail" alt="Your retrived image is here" width="200" height="200">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label" style="font-weight: bold">Tên
+                            Stylist:</label>
+                        <p id="nameDetail"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" style="font-weight: bold" class="col-form-label">Mô tả:</label>
+                        <p id="descriptionDetail"></p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hủy</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    const modalStatus1 = document.getElementById('modalStatus1');
+    const modalStatus0 = document.getElementById('modalStatus0');
+    const modalStatus2 = document.getElementById('modalStatus2');
+    const btnSearch = document.getElementById('btnSearch');
+    const modalEdit = document.getElementById('modalEdit');
+
+
+    const btnEditStylist = document.getElementById('btnEditStylist');
+    const editForm = document.forms['form-edit'];
+    const formSearch = document.forms['formSearch'];
+
+
+    $(document).ready(function () {
+        $('.editbtn').on('click', function () {
+
+            $('#modalEdit').modal('show');
+            $tr = $(this).closest('tr');
+            const data = $tr.children("td").map(function () {
+                return $(this).text();
+            }).get();
+            const Imagedata = [];
+            Imagedata.push($tr.find('img').attr('src'))
+            $('#SetImage').attr('src', Imagedata[0]);
+            $('#nameStylist').val(data[0]);
+            $('#description').val(data[3]);
+            let id = $(this).attr("data-id");
+            btnEditStylist.onclick = function () {
+                editForm.action = '/hairstylist/edit/' + id + '?_method=PUT';
+                editForm.submit();
+            }
+        });
+    });
+
+    function onFileSelected(event) {
+        var selectedFile = event.target.files[0];
+        var reader = new FileReader();
+
+        var imgtag = document.getElementById("SetImage");
+        imgtag.title = selectedFile.name;
+        reader.onload = function (event) {
+            imgtag.src = event.target.result;
+        };
+        reader.readAsDataURL(selectedFile);
+    }
+
+    $(document).ready(function () {
+        $('.btnDetail').on('click', function () {
+
+            $('#modalDetail').modal('show');
+            $tr = $(this).closest('tr');
+            const data = $tr.children("td").map(function () {
+                return $(this).text();
+            }).get();
+            const Imagedata = [];
+            Imagedata.push($tr.find('img').attr('src'))
+
+            $('#imageDetail').attr('src', Imagedata[0]);
+            $('#nameDetail').text(data[0]);
+            $('#descriptionDetail').text(data[3]);
+        });
+    });
+    const table = document.getElementById("table_main1");
+    const ranh = table.querySelectorAll('button.status0');
+    const ban = table.querySelectorAll('button.status1');
+    const nghilam = table.querySelectorAll('button.status2');
+    const btnEdit = table.querySelectorAll('button.editbtn');
+    const status_main = table.querySelectorAll('td.status_main');
+
+    var list_status = [status_main.length];
+    for (let i = 0; i < status_main.length; i++) {
+        if (status_main[i].innerHTML == 0) {
+            status_main[i].innerHTML = "Rảnh"
+            status_main[i].style.color = "#169A12"
+            status_main[i].style.fontWeight = "bold"
+        } else if (status_main[i].innerHTML == 1) {
+            status_main[i].innerHTML = "Bận"
+            status_main[i].style.color = "#A9A400"
+            status_main[i].style.fontWeight = "bold"
+        } else if (status_main[i].innerHTML == 2) {
+            status_main[i].innerHTML = "Nghỉ làm"
+            status_main[i].style.color = "#AF1C1C"
+            status_main[i].style.fontWeight = "bold"
+        }
+    }
+    for (let i = 0; i < status_main.length; i++) {
+        if (status_main[i].innerHTML == "Rảnh") {
+            list_status[i] = 0;
+        } else if (status_main[i].innerHTML == "Bận") {
+            list_status[i] = 1;
+        } else if (status_main[i].innerHTML == "Nghỉ làm") {
+            list_status[i] = 2;
+        }
+    }
+    for (let i = 0; i < list_status.length; i++) {
+
+        if (list_status[i] == 0) {
+            ranh[i].hidden = true;
+            ban[i].hidden = false;
+            nghilam[i].hidden = false;
+            // btn_delete[i].hidden = true;
+
+        } else if (list_status[i] == 1) {
+            ranh[i].hidden = false;
+            ban[i].hidden = true;
+            nghilam[i].hidden = false;
+            // btn_delete[i].hidden = false;
+
+        }
+        else if(list_status[i] == 2){
+            ranh[i].hidden = true;
+            ban[i].hidden = true;
+            nghilam[i].hidden = true;
+            btnEdit[i].hidden = true;
+        }
+    }
+    const status1Form = document.forms['form-status1'];
+    const btnStatus1 = document.getElementById('btnStatus1');
+    const status0Form = document.forms['form-status0'];
+    const btnStatus0 = document.getElementById('btnStatus0');
+    const status2Form = document.forms['form-status2'];
+    const btnStatus2= document.getElementById('btnStatus2');
+    modalStatus1.addEventListener('show.bs.modal', function (event) {
+        let button = event.relatedTarget
+        let id = button.getAttribute('data-id')
+        btnStatus1.onclick = function () {
+            status1Form.action = '/hairstylist/status1/' + id + '?_method=PUT';
+            status1Form.submit();
+        }
+    });
+    modalStatus0.addEventListener('show.bs.modal', function (event) {
+        let button = event.relatedTarget
+        let id = button.getAttribute('data-id')
+        btnStatus0.onclick = function () {
+            status0Form.action = '/hairstylist/status0/' + id + '?_method=PUT';
+            status0Form.submit();
+        }
+    });
+    modalStatus2.addEventListener('show.bs.modal', function (event) {
+        let button = event.relatedTarget
+        let id = button.getAttribute('data-id')
+        btnStatus2.onclick = function () {
+            status2Form.action = '/hairstylist/status2/' + id + '?_method=PUT';
+            status2Form.submit();
+        }
+    })
+</script>
+

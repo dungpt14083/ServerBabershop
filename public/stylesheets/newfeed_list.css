@@ -1,0 +1,25 @@
+#preview{
+    max-width: 100%;
+    display: flex;
+}
+#preview .item-img {
+    max-width: 30%;
+    margin-left: 10px;
+}
+
+#preview img{
+    max-width: 100%;
+    height: auto;
+}#previewDetail{
+    max-width: 100%;
+    display: flex;
+}
+#previewDetail .item-img {
+    max-width: 30%;
+    margin-left: 10px;
+}
+
+#previewDetail img{
+    max-width: 100%;
+    height: auto;
+}

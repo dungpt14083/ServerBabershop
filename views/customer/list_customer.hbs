@@ -1,0 +1,231 @@
+<div>
+    <form action="" method="post" name="formSearchCustomer">
+    <div class="row g-2 ">
+        <div class="form-outline col-auto col-md-2 ms-md-auto">
+            <div class="w-100 ">
+                <input type="text" placeholder="Tên người dùng" name="searchCustomer"
+                       class=" form-control form-control-md "/>
+            </div>
+        </div>
+
+        <div class="col-auto">
+            <button type="submit" class="btn btn-warning" style="background-color: #F9E323;font-weight: bold">
+                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-search"
+                     viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+            </button>
+        </div>
+
+    </div>
+    </form>
+    <table id="table_main" class="table table-responsive  table-hover table table-bordered " style="margin-top: 20px">
+        <thead>
+        <tr style="text-align: center">
+            <th scope="col">STT</th>
+            <th scope="col">Tên người dùng</th>
+            <th scope="col">Ảnh</th>
+            <th scope="col">Năm sinh</th>
+            <th scope="col">Số điện thoại</th>
+            <th scope="col">Địa chỉ</th>
+            <th scope="col">Trạng thái</th>
+            <th scope="col">Chỉnh sửa</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {{#each listCustomer}}
+            <tr style="text-align: center">
+                <td scope="row">{{@index}}</td>
+                <td>{{this.nameUser}}</td>
+
+                <td><img style="border-radius: 10px" width="75" height="75" src="{{this.image}}"><img/></td>
+
+                <td class="text-center time">{{this.birthOfYear}}</td>
+                <td>+84 {{this.phone}}</td>
+                <td>{{this.address}}</td>
+                <td class="tdStatusC">{{this.statusC}}</td>
+                <td>
+                    <button type="button" class="btn btn-warning detailBtn"
+                            style="background-color: #F9E323;font-weight: bold"
+                            data-id="{{this.id}}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-three-dots" viewBox="0 0 16 16">
+                            <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                        </svg>
+                    </button>
+                    <button type="button" class="btn btn-warning banAcc"
+                            style="background-color: #F9E323;font-weight: bold"
+                            data-id="{{this.id}}" data-bs-toggle="modal" data-bs-target="#modalStatusC">
+                        Khóa
+                    </button>
+                </td>
+
+            </tr>
+        {{else}}
+            <tr>
+                <h4 colspan="9" class="text-center" style="color: darkred ; margin-top: 30px">Chưa có ai sử sụng app
+                    !</h4>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+<!--Detail -->
+<div id="modalDetail" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Chi tiết khách hàng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <img style="text-align: center;border-radius: 10px" id="image" width="200" height="200">
+                </div>
+                <div class="form-group">
+                    <label for="nameUser" class="col-form-label" style="font-weight: bold">Tên khách hàng</label>
+                    <p id="nameUser">
+                </div>
+                <div class="form-group">
+                    <label for="birthOfYear" class="col-form-label" style="font-weight: bold">Năm sinh</label>
+                    <p id="birthOfYear">
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="col-form-label" style="font-weight: bold">Số điện thoại</label>
+                    <p id="phone">
+                </div>
+                <div class="form-group">
+                    <label for="address" class="col-form-label" style="font-weight: bold">Địa chỉ</label>
+                    <p id="address">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form name="form-statusC" method="post"></form>
+<div id="modalStatusC" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Dừng dịch vụ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn chắc chắn muốn khóa tài khoản này?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="btnStatusC" type="submit" class="btn btn-danger">Khóa</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const addZero = (number, length = 2) => {
+        var my_string = "" + number
+        while (my_string.length < length) {
+            my_string = "0" + my_string
+        }
+        return my_string
+    }
+    const format_date = (str_date, str_format = "YYYY-MM-dd") => {
+        const date = new Date(str_date)
+        if (!str_date || date == 'Invalid Date') return str_date
+
+        const year = date.getFullYear()
+        const month = addZero(date.getMonth() + 1)
+        const day = addZero(date.getDate())
+
+        const hour = addZero(date.getHours())
+        const minutes = addZero(date.getMinutes())
+        const seconds = addZero(date.getSeconds())
+
+        str_format = str_format.replace('YYYY', year)
+                .replace('MM', month)
+                .replace('dd', day)
+                .replace('HH', hour)
+                .replace('mm', minutes)
+                .replace('ss', seconds)
+        return str_format
+    }
+
+    const table_main = document.getElementById("table_main")
+    const td_dates = table_main.querySelectorAll('td.time')
+    let modalStatusC = document.getElementById("modalStatusC");
+    let btnStatusC = document.getElementById("btnStatusC");
+    let fromStatusC = document.forms['form-statusC'];
+    modalStatusC.addEventListener('show.bs.modal', function (event) {
+        let button = event.relatedTarget
+        let id = button.getAttribute('data-id')
+        btnStatusC.onclick = function () {
+            fromStatusC.action = '/customer/banacc/' + id + '?_method=PUT';
+            fromStatusC.submit();
+        }
+    });
+    for (let i = 0; i < td_dates.length; i++) {
+        const string_date = td_dates[i].innerHTML
+        td_dates[i].innerHTML = format_date(string_date, "dd/MM/YYYY")
+    }
+
+    /*Detail*/
+    $(document).ready(function () {
+        $('.detailBtn').on('click', function () {
+            $('#modalDetail').modal('show');
+            $tr = $(this).closest('tr');
+            var data = $tr.children("td").map(function () {
+                return $(this).text();
+            }).get();
+            const imageData = [];
+            imageData.push($tr.find('img').attr('src'))
+
+            $('#nameUser').text(data[1]);
+
+            // var image = document.getElementById('image')
+            // if (image.value == null || image.value == '') {
+            //     $('#image').attr('src','https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png');
+            // } else {
+            $('#image').attr('src',imageData[0]);
+            // }
+            $('#birthOfYear').text(data[3]);
+            $('#phone').text(data[4]);
+            $('#address').text(data[5]);
+        })
+    })
+
+    const xoa = table_main.querySelectorAll('button.banAcc')
+    const tdStatus = table_main.querySelectorAll('td.tdStatusC')
+    const list_status = [tdStatus.length];
+
+    for (let i = 0; i < tdStatus.length; i++) {
+        if (tdStatus[i].innerHTML == 0) {
+            tdStatus[i].innerHTML = "Đang hoạt động"
+            tdStatus[i].style.color = "#169A12"
+            tdStatus[i].style.fontWeight = "bold"
+        } else if (tdStatus[i].innerHTML == 1) {
+            tdStatus[i].innerHTML = "Đã khóa"
+            tdStatus[i].style.color = "#AF1C1C"
+            tdStatus[i].style.fontWeight = "bold"
+        }
+    }
+    for (let i = 0; i < tdStatus.length; i++) {
+        if (tdStatus[i].innerHTML == "Đang hoạt động") {
+            list_status[i] = 0;
+        } else if (tdStatus[i].innerHTML == "Đã khóa") {
+            list_status[i] = 1;
+        }
+    }
+    for (let i = 0; i < list_status.length; i++) {
+        if (list_status[i] == 0) {
+            xoa[i].hidden = false;
+        } else if (list_status[i] == 1) {
+            xoa[i].hidden = true;
+        }
+    }
+
+</script>

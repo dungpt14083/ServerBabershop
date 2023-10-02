@@ -1,0 +1,331 @@
+<link href="/stylesheets/newfeed_list.css" type="text/css" rel="stylesheet">
+<div>
+    <form method="post">
+        <div class="row g-2">
+            <div class="form-outline col-auto col-md-2 ms-md-auto">
+                <div class="w-100">
+                    <input type="text" id="form3Example1cg" placeholder="Tên tin tức" name="nameNewfeed"
+                           class=" form-control form-control-md "/>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <button type="submit" class="btn btn-warning" style="background-color: #F9E323;font-weight: bold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-search"
+                         viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="col-auto">
+                <a type="button" href="/newfeed/add/{{this._id}}" class="btn btn-warning"
+                   style="background-color: #F9E323;font-weight: bold">Thêm mới</a>
+            </div>
+        </div>
+    </form>
+    <table class="table table-responsive  table-hover table table-bordered " style="margin-top: 20px">
+        <thead>
+        <tr style="text-align: center">
+            <th scope="col">ID</th>
+            <th scope="col">Tiêu đề</th>
+            <th scope="col">Ảnh</th>
+            <th scope="col">Nội dung tiêu đề</th>
+            <th scope="col">Mô tả</th>
+            <th scope="col">Chỉnh sửa</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {{#each listNewfeed}}
+            <tr style="text-align: center">
+                <th scope="row">{{@index}}</th>
+                <td style="white-space: nowrap; overflow: hidden; max-width: 150px; text-overflow: ellipsis;">{{this.title}}</td>
+                <td>
+                    {{#each this.image}}
+
+                        <img style="border-radius: 10px" height="55" width="60" src="{{this}}">
+                    {{/each}}
+                </td>
+                <td style="white-space: nowrap; overflow: hidden; max-width: 300px; text-overflow: ellipsis;">{{this.contentTitle}}</td>
+                <td style="white-space: nowrap; overflow: hidden; max-width: 300px; text-overflow: ellipsis;">{{this.description}}</td>
+<!--                <td style="white-space: nowrap; overflow: hidden; max-width: 300px; text-overflow: clip;">{{this.contentTitle}}</td>-->
+<!--                <td style="white-space: nowrap; overflow: hidden; max-width: 400px; text-overflow: clip;">{{this.description}}</td>-->
+
+
+                <td style="">
+                    <a type="button" data-id="{{this.id}}" data-bs-toggle="modal"
+                       data-bs-target="#editModal" class="btn btn-warning btnedit"
+                       style="background-color: #F9E323;font-weight: bold">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor"
+                             class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd"
+                                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                        </svg>
+                    </a>
+                    <button type="button" class="btn btn-warning" data-id="{{this.id}}" data-bs-toggle="modal"
+                            data-bs-target="#modalDelete" style="background-color: #F9E323;font-weight: bold">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor"
+                             class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                            <path fill-rule="evenodd"
+                                  d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                        </svg>
+                    </button>
+                    <a type="button" class="btn btn-warning btnDetail"
+                       style="background-color: #F9E323;font-weight: bold;margin-top: 5px" data-bs-toggle="modal"
+                       data-bs-target="#modalDetail"
+                       data-id="{{this.id}}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-three-dots" viewBox="0 0 16 16">
+                            <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                        </svg>
+
+                    </a>
+                </td>
+
+            </tr>
+        {{else}}
+            <tr>
+                <h4 colspan="9" class="text-center" style="color: darkred ; margin-top: 30px">Bạn chưa có tin tức nào !
+                </h4>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+
+<!-- Confirm Delete -->
+<div class="modal" id="modalDelete" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xóa Newfeed?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn chắc chắn muốn xóa tin tức này?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnDeleteNewfeed" class="btn btn-danger" data-bs-dismiss="modal">Xóa bỏ
+                </button>
+                <button type="button" class="btn btn-primary">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+<form method="post" name="delete-newfeed-form"></form>
+
+<!-- The Modal-->
+<div class="modal" id="editModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Sửa tin tức</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form method="post" id="form-3" action="" name="form-edit" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Tiêu đề:</label>
+                        <input type="text" name="title" class="form-control" id="title">
+                        <span class="form-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Ảnh:</label>
+                        <input class="form-control" name="imageNewfeed" id="imageNewfeed" multiple type="file">
+                        <div style="" class="list-img" id="preview"></div>
+                        <span class="form-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Nội dung tiêu đề:</label>
+                        <input type="text" name="contentTitle" class="form-control" id="contentTitle">
+                        <span class="form-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Mô tả:</label>
+                        <textarea class="form-control" name="description" placeholder="Nội dung ..."
+                                  id="description"></textarea>
+                        <span class="form-message"></span>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" id="btnEditNewfeed" class="btn btn-danger btnEditNewfeed">Lưu lại</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--Detail Newfeed-->
+<div class="modal" id="modalDetail">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Thông tin chi tiết</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form>
+
+                    <div class="form-group">
+                        <!--                        <label for="recipient-name" class="col-form-label">Ảnh:</label>-->
+                        <div style="" class="list-img" id="previewDetail"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label" style="font-weight: bold">Tiêu đề:</label>
+                        <p id="titleDetail"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label" style="font-weight: bold">Nội dung tiêu
+                            đề:</label>
+                        <p id="contentTitleDetail"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" style="font-weight: bold" class="col-form-label">Mô tả:</label>
+                        <p id="descriptionDetail"></p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hủy</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    let modalDelete = document.getElementById('modalDelete');
+    let btnDeleteNewfeed = document.getElementById('btnDeleteNewfeed');
+    let btnEditNewfeed = document.getElementById('btnEditNewfeed');
+    let deleteForm = document.forms['delete-newfeed-form'];
+    let editForm = document.forms['form-edit'];
+    modalDelete.addEventListener('show.bs.modal', function (event) {
+        let button = event.relatedTarget
+        let id = button.getAttribute('data-id')
+        btnDeleteNewfeed.onclick = function () {
+            deleteForm.action = '/newfeed/delete/' + id + '?_method=DELETE';
+            deleteForm.submit();
+        }
+    })
+    $(document).ready(function () {
+        $('.btnedit').on('click', function () {
+
+            $('#editmodal').modal('show');
+            $tr = $(this).closest('tr');
+            const data = $tr.children("td").map(function () {
+                return $(this).text();
+            }).get();
+            const imgs = $tr.find('img')
+            $("#preview").empty();
+            for (let i = 0; i < imgs.length; i++) {
+                $("#preview").append(`
+                    <div class="item-img">
+                        <img style="border-radius: 10px" src="${$(imgs[i]).attr("src")}">
+                    </div>
+                `)
+            }
+            $('#title').val(data[0]);
+            $('#contentTitle').val(data[2]);
+            $('#description').val(data[3]);
+            let id = $(this).attr("data-id");
+            btnEditNewfeed.onclick = function () {
+                editForm.action = '/newfeed/edit/' + id + '?_method=PUT';
+                editForm.submit();
+            }
+        });
+    });
+    $(document).ready(function () {
+        $('.btnDetail').on('click', function () {
+
+            $('#modalDetail').modal('show');
+            $tr = $(this).closest('tr');
+            const data = $tr.children("td").map(function () {
+                return $(this).text();
+            }).get();
+            const imgs = $tr.find('img')
+            $("#previewDetail").empty();
+            for (let i = 0; i < imgs.length; i++) {
+                $("#previewDetail").append(`
+                    <div class="item-img">
+                        <img src="${$(imgs[i]).attr("src")}">
+                    </div>
+                `)
+            }
+            $('#titleDetail').text(data[0]);
+            $('#contentTitleDetail').text(data[2]);
+            $('#descriptionDetail').text(data[3]);
+        });
+    });
+
+    //doan e cop tren stack
+    const el = (sel, par) => (par || document).querySelector(sel);
+    const elNew = (tag, props) => Object.assign(document.createElement(tag), props);
+    const elFiles = el("#imageNewfeed");
+    const elPreview = el("#preview");
+    const previewImage = (props) => elPreview.append(elNew("img", props));
+    const reader = (file, method = "readAsDataURL") => new Promise((resolve, reject) => {
+        const fr = new FileReader();
+        fr.onload = () => resolve({file, result: fr.result});
+        fr.onerror = (err) => reject(err);
+        fr[method](file);
+    });
+    const previewImages = async (files) => {
+        elPreview.innerHTML = "";
+
+        let filesData = [];
+
+        try {
+            const readerPromises = files.map((file) => reader(file));
+            filesData = await Promise.all(readerPromises);
+        } catch (err) {
+            elPreview.textContent = "An error occurred while loading images. Try again.";
+            console.error(err);
+            return; // Exit function here.
+        }
+        filesData.forEach(data => {
+            previewImage({
+                src: data.result, // Base64 String
+                alt: data.file.name // File.name String
+            });
+        });
+    };
+    elFiles.addEventListener("change", (ev) => {
+        if (!ev.currentTarget.files) return; // Do nothing.
+        previewImages([...ev.currentTarget.files]);
+    });
+</script>
+
+<script src="/stylesheets/validator.js"></script>
+<script>
+    Validator({
+        form: '#form-3',
+        errSelector: '.form-message',
+        rules: [
+            Validator.isRequired('#title','Tiêu đề không được để trống'),
+            // Validator.isRequired('#imageNewfeed','Vui lòng chọn ảnh'),
+            Validator.isRequired('#contentTitle','Nội dung tiêu đề không được để trống'),
+            Validator.isRequired('#description','Mô tả không được để trống'),
+            // Validator.isEmail('#email'),
+        ],
+        // onSubmit: function (data){
+        //
+        // }
+    })
+</script>

@@ -1,0 +1,396 @@
+<div>
+    <form action="" method="post" id="formSearchService">
+
+        <div class="row g-2 ">
+            <div class="form-outline col-auto col-md-2 ms-md-auto">
+                <div class="w-100 ">
+                    <input type="text" placeholder="Tên dịch vụ" name="searchService"
+                           class=" form-control form-control-md "/>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <button type="submit" class="btn btn-warning" style="background-color: #F9E323;font-weight: bold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor"
+                         class="bi bi-search"
+                         viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                </button>
+            </div>
+
+
+            <div class="col-auto">
+                <a type="button" href="/service/add" class="btn btn-warning"
+                   style="background-color: #F9E323;font-weight: bold">Thêm mới</a>
+            </div>
+        </div>
+    </form>
+    <table id="table_sv" class="table table-responsive  table-hover table table-bordered " style="margin-top: 20px">
+        <thead>
+        <tr style="text-align: center">
+            <th scope="col">STT</th>
+            <th scope="col">Tên dịch vụ</th>
+            <th scope="col">Ảnh</th>
+            <th scope="col">Giá</th>
+            <th scope="col">Thời gian</th>
+            <th scope="col">Trạng thái</th>
+            <th scope="col">Mô tả</th>
+            <th scope="col">Chỉnh sửa</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {{#each listService}}
+            <tr style="text-align: center">
+                <th scope="row">{{@index}}</th>
+                <td>{{this.nameService}}</td>
+                <td  ><img style="border-radius: 10px" width="95" height="75" src="{{this.images}}"><img/></td>
+                <td class="text-center">{{this.price}}</td>
+                <td>{{this.workTime}}</td>
+                <td class="tdStatus" >{{this.statusService}}</td>
+                <td style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width:200px">{{this.describe}}</td>
+                <td style="max-width: 50px">
+                    <button data-id="{{this.id}}" data-bs-toggle="modal" data-bs-target="#modalEdit"
+                            class="btn btn-warning editbtn " style="background-color: #F9E323;font-weight: bold">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor"
+                             class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd"
+                                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                        </svg>
+                    </button>
+                    <button class="btn btn-warning detailBtn"
+                            style="background-color: #F9E323;font-weight: bold"
+                            data-id="{{this.id}}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-three-dots" viewBox="0 0 16 16">
+                            <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                        </svg>
+
+                    </button>
+                    <button class="btn btn-warning statusService" style="background-color: #fc4141;font-weight: bold;margin-top: 5px"
+                            data-id="{{this.id}}" data-bs-toggle="modal" data-bs-target="#modalStatus">
+                        Dừng
+                    </button>
+
+                </td>
+
+            </tr>
+        {{else}}
+            <tr>
+                <h4 colspan="9" class="text-center" style="color: darkred ; margin-top: 30px">Bạn chưa có dịch vụ nào
+                    !</h4>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+<!-- Edit -->
+<div class="modal" id="modalEdit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Sửa dịch vụ</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form method="post" action="" id="form-edit" name="form-edit" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Tên dịch vụ:</label>
+                        <input type="text" name="nameService" class="form-control" id="nameService">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Giá:</label>
+                        <input type="text" name="price" class="form-control" id="price">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Thời gian:</label>
+                        <input type="text" name="workTime" class="form-control" id="workTime">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Ảnh:</label>
+                        <input class="form-control" id="images" name="images" type="file"
+                               onchange="onFileSelected(event)">
+                        <img src="" id="SetImage" alt="Your retrived image is here" width="100" height="100">
+                        </input>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Mô tả:</label>
+                        <textarea class="form-control" name="describe" placeholder="Nội dung ..."
+                                  id="describe"></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" id="btnEditService" class="btn btn-danger btnEditService">Lưu lại
+                </button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hủy</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Confirm Delete-->
+<form name="form-status" method="post"></form>
+
+<div id="modalStatus" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Dừng dịch vụ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn chắc chắn muốn dừng dịch vụ này?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="btnStatusService" type="submit" class="btn btn-danger">Dừng</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Detail -->
+<div id="modalDetail" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Chi tiết dịch vụ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <img style="text-align: center;border-radius: 10px" id="delImageService" width="200" height="200">
+                </div>
+                <div class="form-group">
+                    <label for="delNameService" class="col-form-label" style="font-weight: bold">Tên dịch vụ</label>
+                    <p id="delNameService">
+                </div>
+                <div class="form-group">
+                    <label for="delTimeService" class="col-form-label" style="font-weight: bold">Thời gian</label>
+                    <p id="delTimeService">
+                </div>
+                <div class="form-group">
+                    <label for="delPriceService" class="col-form-label" style="font-weight: bold">Giá</label>
+                    <p id="delPriceService">
+                </div>
+                <div class="form-group">
+                    <label for="delDesService" class="col-form-label" style="font-weight: bold">Mô tả</label>
+                    <p id="delDesService">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    <!-- Script Delete-->
+    let editForm = document.forms['form-edit'];
+    let modalStatus = document.getElementById("modalStatus");
+    let modalEdit = document.getElementById("modalEdit");
+    let btnStatusService = document.getElementById("btnStatusService");
+    let btnEditService = document.getElementById("btnEditService");
+    let fromStatus = document.forms['form-status'];
+
+    modalStatus.addEventListener('show.bs.modal', function (event) {
+        let button = event.relatedTarget
+        let id = button.getAttribute('data-id')
+        btnStatusService.onclick = function () {
+            fromStatus.action = '/service/statusService/' + id + '?_method=PUT';
+            fromStatus.submit();
+        }
+    });
+
+    const table = document.getElementById("table_sv")
+    const xoa = table.querySelectorAll('button.statusService')
+    const sua = table.querySelectorAll('button.editbtn')
+    // const btn_delete = table.querySelectorAll('button.btn-danger')
+    const tdStatus = table.querySelectorAll('td.tdStatus')
+    const td_tien = table.querySelectorAll('td.text-center')
+
+    const list_status = [tdStatus.length];
+
+    let tien;
+    let format_tien;
+
+    for (let i = 0; i < tdStatus.length; i++) {
+        if (tdStatus[i].innerHTML == 0) {
+            tdStatus[i].innerHTML = "Đang triển khai"
+            tdStatus[i].style.color = "#169A12"
+            tdStatus[i].style.fontWeight = "bold"
+        } else if (tdStatus[i].innerHTML == 1) {
+            tdStatus[i].innerHTML = "Đã dừng"
+            tdStatus[i].style.color = "#AF1C1C"
+            tdStatus[i].style.fontWeight = "bold"
+        }
+
+        tien = td_tien[i].innerHTML;
+        format_tien = tien.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        td_tien[i].innerHTML = format_tien;
+
+    }
+    for (let i = 0; i < tdStatus.length; i++) {
+        if (tdStatus[i].innerHTML == "Đang triển khai") {
+            list_status[i] = 0;
+        } else if (tdStatus[i].innerHTML == "Đã dừng") {
+            list_status[i] = 1;
+        }
+    }
+    for (let i = 0; i < list_status.length; i++) {
+
+        if (list_status[i] == 0) {
+
+            xoa[i].hidden = false;
+            sua[i].hidden = false;
+        } else if (list_status[i] == 1) {
+            xoa[i].hidden = true;
+            sua[i].hidden = true;
+        }
+    }
+    /*Script edit*/
+    $(document).ready(function () {
+        $('.editbtn').on('click', function () {
+            $('#modalEdit').modal('show');
+            $tr = $(this).closest('tr');
+            const data = $tr.children("td").map(function () {
+                return $(this).text();
+            }).get();
+            const imageData = [];
+            imageData.push($tr.find('img').attr('src'));
+            console.log(imageData);
+            $('#nameService').val(data[0]);
+            $('#SetImage').attr('src', imageData[0]);
+            $('#price').val(data[2]);
+            $('#workTime').val(data[3]);
+            $('#describe').val(data[5]);
+            let id = $(this).attr('data-id');
+            btnEditService.onclick = function () {
+                editForm.action = '/service/edit/' + id + '?_method=PUT';
+                editForm.submit();
+            }
+        });
+    });
+
+    /*Load image*/
+    function onFileSelected(event) {
+        var selectedFile = event.target.files[0];
+        var reader = new FileReader();
+
+        var imgtag = document.getElementById("SetImage");
+        imgtag.title = selectedFile.name;
+
+        reader.onload = function (event) {
+            imgtag.src = event.target.result;
+        };
+
+        reader.readAsDataURL(selectedFile);
+    }
+
+    /*Detail*/
+    $(document).ready(function () {
+        $('.detailBtn').on('click', function () {
+
+            $('#modalDetail').modal('show');
+
+            $tr = $(this).closest('tr');
+            var data = $tr.children("td").map(function () {
+                return $(this).text();
+            }).get();
+
+            const Imagedata = [];
+            Imagedata.push($tr.find('img').attr('src'))
+
+            $('#delNameService').text(data[0])
+            $('#delImageService').attr("src", Imagedata[0]);
+            $('#delPriceService').text(data[2])
+            $('#delTimeService').text(data[3])
+            $('#delDesService').text(data[5])
+
+
+        });
+    });
+</script>
+<!---->
+<!--<div class="modal" id="modalEditService">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h1 class="modal-title " >Sửa dịch vụ</h1>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <form method="post" action="" name="edit-form" enctype="multipart/form-data">-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="nameService" class="col-form-label">Tên dịch vụ</label>-->
+<!--                        <input type="text" class="form-control" id="nameService" name="nameService">-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="message-text" class="col-form-label">Ảnh</label>-->
+<!--                        <input type="file" id="images" name="images"-->
+<!--                               class="form-control" onchange="onFileSelected(event)">-->
+<!--                        <img src="" id="SetImage" width="100" height="100">-->
+<!--                        </input>-->
+<!--                    </div>-->
+
+<!--                    <div class="form-group">-->
+<!--                        <label for="price" class="col-form-label">Giá dịch vụ</label>-->
+<!--                        <input type="text" class="form-control" id="price" name="price">-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="workTime" class="col-form-label">Thời gian</label>-->
+<!--                        <input type="text" class="form-control" id="workTime" name="workTime">-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="describe" class="col-form-label">Mô tả</label>-->
+<!--                        <input type="text" class="form-control" id="describe" name="describe">-->
+<!--                    </div>-->
+
+<!--                </form>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" id="btnEditService" class="btn btn-danger ">Lưu</button>-->
+<!--                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hủy</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--// $(document).ready(function () {-->
+<!--//     $('.editbtn').on('click', function () {-->
+<!--//         $('#modalEdit').modal('show');-->
+<!--//         $tr = $(this).closest('tr');-->
+<!--//         const data = $tr.children("td").map(function () {-->
+<!--//             return $(this).text();-->
+<!--//         }).get();-->
+<!--//         const Imagedata = [];-->
+<!--//         Imagedata.push($tr.find('img').attr('src'))-->
+<!--//-->
+<!--//         $('#nameService').val(data[0]);-->
+<!--//         $('#SetImage').attr("src", Imagedata[0]);-->
+<!--//         $('#price').val(data[2]);-->
+<!--//         $('#workTime').val(data[3]);-->
+<!--//         $('#describe').val(data[4]);-->
+<!--//-->
+<!--//         let id = $(this).attr('data-id');-->
+<!--//         btnEditService.onclick = function () {-->
+<!--//             editform.action = '/service/edit/' + id + '?_method=PUT';-->
+<!--//             editform.submit();-->
+<!--//-->
+<!--//         }-->
+<!--//-->
+<!--//-->
+<!--//     });-->
+<!--// });-->

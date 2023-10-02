@@ -1,0 +1,32 @@
+<section class=" bg-image mt-5">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-7">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-4">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example1cg">Tên stylist</label>
+                                    <input value="{{obj.nameStylist}}" type="text" id="form3Example1cg" name="nameStylist" class="form-control form-control-md" />
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example4cdg">Ảnh stylist</label>
+                                    <input value="{{obj.imageStylist}}" class="form-control form-control-md  " name="imageStylist" type="file"/>
+                                    <div class="small text-muted mt-2">Upload your photo, video or any related file. Maximum file size 50 MB</div>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example4cg">Mô tả</label>
+                                    <textarea class="form-control" rows="3" name="description" placeholder="Nội dung...">{{obj.description}}</textarea>
+                                </div>
+                                <div class="d-flex justify-content-center mt-3">
+                                    <button type="submit" class="btn btn-warning" style="background-color: #F9E323;font-weight: bold">Hoàn tất</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
